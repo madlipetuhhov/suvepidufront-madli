@@ -41,6 +41,7 @@ export default {
       this.$emit('event-selected-ticketType-change', this.selectedTypeId)
     },
   },
+
   beforeMount() {
     this.sendGetEventTicketTypeRequest()
   }

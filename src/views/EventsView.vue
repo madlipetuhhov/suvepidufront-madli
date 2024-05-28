@@ -65,7 +65,7 @@
 </template>
 <script>
 import router from "@/router";
-import DeleteMainEventModal from "@/components/modal/DeleteMainEventModal.vue";
+import DeleteMainEventModal from "@/components/modal/mainevent/DeleteMainEventModal.vue";
 import BusinessDropdown from "@/components/event/BusinessDropdown.vue";
 import EventImage from "@/components/image/EventImage.vue";
 

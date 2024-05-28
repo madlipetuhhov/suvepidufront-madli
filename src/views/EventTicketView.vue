@@ -36,7 +36,7 @@
 </template>
 <script>
 import router from "@/router";
-import TicketModal from "@/components/modal/TicketModal.vue";
+import TicketModal from "@/components/modal/ticket/TicketModal.vue";
 import {useRoute} from "vue-router";
 
 export default {

@@ -37,7 +37,7 @@
 <script>
 import {useRoute} from "vue-router";
 import router from "@/router";
-import TicketTypeModal from "@/components/modal/TicketTypeModal.vue";
+import TicketTypeModal from "@/components/modal/ticket/TicketTypeModal.vue";
 
 export default {
   name: "EventTicketTypeView",

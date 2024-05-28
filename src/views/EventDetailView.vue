@@ -70,8 +70,8 @@
 
 <script>
 import router from "@/router";
-import EventDetailModal from "@/components/modal/EventDetailModal.vue";
-import DeleteEventDetailModal from "@/components/modal/DeleteEventDetailModal.vue";
+import EventDetailModal from "@/components/modal/eventdetail/EventDetailModal.vue";
+import DeleteEventDetailModal from "@/components/modal/eventdetail/DeleteEventDetailModal.vue";
 import {useRoute} from "vue-router";
 
 export default {

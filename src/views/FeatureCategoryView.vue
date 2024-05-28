@@ -56,8 +56,8 @@
 <script>
 import router from "@/router";
 import {useRoute} from "vue-router";
-import FeatureModal from "@/components/modal/FeatureModal.vue";
-import CategoryModal from "@/components/modal/CategoryModal.vue";
+import FeatureModal from "@/components/modal/featurecategory/FeatureModal.vue";
+import CategoryModal from "@/components/modal/featurecategory/CategoryModal.vue";
 
 export default {
   name: "FeatureCategoryView",
