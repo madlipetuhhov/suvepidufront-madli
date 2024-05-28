@@ -17,18 +17,18 @@
             <td>{{ ticketType.ticketTypeName }}</td>
             <td>{{ ticketType.ticketTypePrice }}</td>
             <td>
-              <font-awesome-icon @click="openTicketTypesModalEdit(ticketType.ticketTypeId)" class="cursor-pointer"
+              <font-awesome-icon @click="openTicketTypeEditModal(ticketType.ticketTypeId)" class="cursor-pointer"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
           </tr>
           </tbody>
         </table>
-        <font-awesome-icon @click="openTicketTypesModalNew" :icon="['fas', 'plus']"/>
+        <font-awesome-icon @click="openTicketTypeModal" :icon="['fas', 'plus']"/>
       </div>
     </div>
 
     <div>
-      <TicketTypeModal ref="ticketTypesModalRef" @event-ticket-type-edited-or-added="sendGetTicketTypesRequest"/>
+      <TicketTypeModal ref="ticketTypesModalRef" @event-ticket-type-edited-or-added="eventTicketTypeEditedOrAdded"/>
     </div>
 
   </div>
@@ -58,17 +58,6 @@ export default {
     }
   },
   methods: {
-    openTicketTypesModalNew() {
-      this.$refs.ticketTypesModalRef.decideIfNewOrEditTicketType(0, this.mainEventId);
-      this.$refs.ticketTypesModalRef.$refs.modalRef.openModal()
-    },
-
-    openTicketTypesModalEdit(ticketTypeId) {
-      this.$refs.ticketTypesModalRef.decideIfNewOrEditTicketType(ticketTypeId, this.mainEventId);
-      // siin panen ticketTypeId kaasa
-      this.$refs.ticketTypesModalRef.$refs.modalRef.openModal()
-    },
-
     sendGetTicketTypesRequest() {
       this.$http.get("/ticket-types", {
             params: {
@@ -93,6 +82,19 @@ export default {
       }).catch(() => {
         router.push({name: 'errorRoute'})
       })
+    },
+
+    openTicketTypeModal() {
+      this.$refs.ticketTypesModalRef.handleOpenTicketTypeModal()
+    },
+
+    openTicketTypeEditModal(ticketTypeId) {
+      this.$refs.ticketTypesModalRef.handleOpenTicketTypeModalAsEdit(ticketTypeId)
+    },
+
+
+    eventTicketTypeEditedOrAdded() {
+      this.sendGetTicketTypesRequest()
     },
   },
 

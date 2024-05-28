@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-
+      <h3>{{ isAdd ? "Lisa sündmuse asukoha info" : "Muuda sündmuse asukoha infot" }}</h3>
     </template>
     <template #body>
       <div class="mb-3">
@@ -62,7 +62,6 @@ export default {
     return {
       isAdd: true,
       mainEventId: Number(useRoute().query.mainEventId),
-      // saab kasutada routerit modalil, kui ei pea seda mujal lehel kasutama ja jääme samale lehele
       eventDetailId: 0,
 
       eventDetailInfo: {
@@ -77,56 +76,6 @@ export default {
     }
   },
   methods: {
-    handleOpenEventDetailModalAsEdit(eventDetailId) {
-      this.isAdd = false
-      this.eventDetailId = eventDetailId
-      this.sendGetEventDetailRequest();
-    },
-
-    addEventDetail() {
-      this.sendAddEventDetailRequest()
-    },
-
-    editEventDetail() {
-      this.sendPutEventDetailRequest()
-    },
-
-    sendAddEventDetailRequest() {
-      this.$http.post("/event/detail", this.eventDetailInfo, {
-            params: {
-              mainEventId: this.mainEventId
-            }
-          }
-      ).then(() => {
-        this.closeEventDetailModal()
-        router.push({name: 'eventDetailRoute'})
-        this.$emit('event-detail-edited-or-added')
-      }).catch(() => {
-        router.push({name: 'errorRoute'})
-      })
-    },
-
-    sendPutEventDetailRequest() {
-      this.$http.put("/event/detail", this.eventDetailInfo, {
-            params: {
-              eventDetailId: this.eventDetailId
-            }
-          }
-      ).then(() => {
-        this.closeEventDetailModal()
-        this.$emit('event-detail-edited-or-added')
-      }).catch(() => {
-        router.push({name: 'errorRoute'})
-      })
-    },
-
-    closeEventDetailModal() {
-      this.$refs.modalRef.closeModal()
-    },
-
-    setCountyDropdownSelectedCountyId() {
-      this.$refs.countyDropdownRef.selectedCountyId = this.eventDetailInfo.countyId
-    },
     sendGetEventDetailRequest() {
       this.$http.get("/event/detail", {
             params: {
@@ -142,8 +91,69 @@ export default {
       })
     },
 
+    sendAddEventDetailRequest() {
+      this.$http.post("/event/detail", this.eventDetailInfo, {
+            params: {
+              mainEventId: this.mainEventId
+            }
+          }
+      ).then(() => {
+        this.resetEventDetailModalData()
+        this.closeEventDetailModal()
+        this.$emit('event-detail-edited-or-added')
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    },
+
+    sendPutEventDetailRequest() {
+      this.$http.put("/event/detail", this.eventDetailInfo, {
+            params: {
+              eventDetailId: this.eventDetailId
+            }
+          }
+      ).then(() => {
+        this.resetEventDetailModalData()
+        this.closeEventDetailModal()
+        this.$emit('event-detail-edited-or-added')
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    },
+
+    handleOpenEventDetailModal() {
+      this.isAdd = true
+      this.$refs.modalRef.openModal()
+    },
+
+    handleOpenEventDetailModalAsEdit(eventDetailId) {
+      this.isAdd = false
+      this.eventDetailId = eventDetailId
+      this.sendGetEventDetailRequest();
+    },
+
+    setCountyDropdownSelectedCountyId() {
+      this.$refs.countyDropdownRef.selectedCountyId = this.eventDetailInfo.countyId
+    },
+
     setSelectedCountyId(selectedCountyId) {
       this.eventDetailInfo.countyId = selectedCountyId
+    },
+
+    resetEventDetailModalData() {
+      this.eventDetailInfo = {}
+    },
+
+    addEventDetail() {
+      this.sendAddEventDetailRequest()
+    },
+
+    editEventDetail() {
+      this.sendPutEventDetailRequest()
+    },
+
+    closeEventDetailModal() {
+      this.$refs.modalRef.closeModal()
     },
 
   }

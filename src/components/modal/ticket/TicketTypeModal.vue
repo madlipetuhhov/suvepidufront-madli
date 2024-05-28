@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Lisa piletite tüübid</h3>
+      <h3>{{ isAdd ? "Lisa piletite tüübid" : "Muuda piletitüüpi" }}</h3>
     </template>
     <template #body>
       <div class="container text-start">
@@ -21,8 +21,9 @@
       </div>
     </template>
     <template #buttons>
-      <button @click="addOrUpdateTicketType" type="submit" class="btn button-success btn-primary">OK</button>
-      <button @click="closeTicketTypeModal" type="submit"
+      <button v-if="isAdd" @click="addTicketType" type="button" class="btn button-success btn-primary">Lisa</button>
+      <button v-else @click="editTicketType" type="button" class="btn button-cancel btn-primary">Salvesta</button>
+      <button @click="closeTicketTypeModal" type="button"
               class="button-danger btn btn-primary text-center text-nowrap">Loobu
       </button>
     </template>
@@ -32,13 +33,17 @@
 <script>
 import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
+import {useRoute} from "vue-router";
 
 export default {
   name: "TicketTypeModal",
   components: {Modal},
   data() {
     return {
-      mainEventId: 0,
+      isAdd: true,
+      mainEventId: Number(useRoute().query.mainEventId),
+      ticketTypeId: 0,
+
       ticketTypeInfoExtended: {
         ticketTypeName: '',
         ticketTypePrice: 0,
@@ -48,13 +53,7 @@ export default {
     }
   },
   methods: {
-    addOrUpdateTicketType() {
-      if (this.ticketTypeInfoExtended.ticketTypeId !== 0) {
-        this.sendPutEditTicketTypeRequest()
-      } else {
-        this.sendAddTicketTypeRequest()
-      }
-    },
+
 
     sendAddTicketTypeRequest() {
       const ticketTypeInfo = {
@@ -69,7 +68,6 @@ export default {
           }
       ).then(() => {
         this.closeTicketTypeModal()
-        router.push({name: 'eventTicketTypeRoute'})
         this.$emit('event-ticket-type-edited-or-added')
       }).catch(() => {
         router.push({name: 'errorRoute'})
@@ -80,7 +78,6 @@ export default {
       this.$http.put("/ticket-type", this.ticketTypeInfoExtended
       ).then(() => {
         this.closeTicketTypeModal()
-        router.push({name: 'eventTicketTypeRoute'})
         this.$emit('event-ticket-type-edited-or-added')
       }).catch(() => {
         router.push({name: 'errorRoute'})
@@ -100,16 +97,30 @@ export default {
       })
     },
 
-    decideIfNewOrEditTicketType(ticketTypeId, mainEventId) {
-      this.mainEventId = mainEventId;
-      if (ticketTypeId !== 0) {
-        this.sendGetTicketTypeRequest(ticketTypeId)
-      }
+    handleOpenTicketTypeModal() {
+      this.isAdd = true
+      this.$refs.modalRef.openModal()
+    },
+
+    handleOpenTicketTypeModalAsEdit(ticketTypeId) {
+      this.isAdd = false
+      this.ticketTypeId = ticketTypeId
+      this.sendGetTicketTypeRequest(ticketTypeId)
+      this.$refs.modalRef.openModal()
+    },
+
+    addTicketType() {
+      this.sendAddTicketTypeRequest()
+    },
+
+    editTicketType() {
+      this.sendPutEditTicketTypeRequest()
     },
 
     closeTicketTypeModal() {
       this.$refs.modalRef.closeModal()
     },
+
   }
 }
 </script>

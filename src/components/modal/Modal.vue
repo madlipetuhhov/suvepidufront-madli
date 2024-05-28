@@ -41,6 +41,7 @@ export default {
     closeModal() {
       this.isOpen = false
     },
+
     openModal() {
       this.isOpen = true
     }
