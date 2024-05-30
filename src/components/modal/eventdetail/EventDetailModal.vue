@@ -9,15 +9,15 @@
         <input v-model="eventDetailInfo.date" type="date" class="form-control">
       </div>
       <div class="mb-3">
-        <label class="form-label">Algus: </label>
+        <label class="form-label">Algus </label>
 <!--        <input v-model="eventDetailInfo.startTime" type="text" class="form-control" placeholder="_:_">-->
-        <input type="time" id="appt" name="appt">
+        <input v-model="eventDetailInfo.startTime" class="time-picker" type="time">
 
       </div>
       <div class="mb-3">
-        <label class="form-label">Lõpp: </label>
+        <label class="form-label">Lõpp </label>
 <!--        <input v-model="eventDetailInfo.endTime" type="text" class="form-control" placeholder="_:_">-->
-        <input type="time" id="appt" name="appt">
+        <input v-model="eventDetailInfo.endTime" class="time-picker" type="time">
 
       </div>
       <div class="mb-3">
