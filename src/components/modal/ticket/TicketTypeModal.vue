@@ -22,7 +22,7 @@
     </template>
     <template #buttons>
       <button v-if="isAdd" @click="addTicketType" type="button" class="btn button-success btn-primary">Lisa</button>
-      <button v-else @click="editTicketType" type="button" class="btn button-cancel btn-primary">Salvesta</button>
+      <button v-else @click="editTicketType" type="button" class="btn button-neutral btn-primary">Salvesta</button>
       <button @click="closeTicketTypeModal" type="button"
               class="button-danger btn btn-primary text-center text-nowrap">Loobu
       </button>

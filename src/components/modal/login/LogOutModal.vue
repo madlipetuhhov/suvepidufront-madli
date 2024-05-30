@@ -5,7 +5,7 @@
     </template>
     <template #buttons>
       <button @click="executeLogOut" type="submit" class="button-danger btn btn-primary text-center text-nowrap">Logi välja</button>
-      <button @click="closeLogOutModal" type="submit" class="button-cancel btn btn-primary text-center text-nowrap">Loobu</button>
+      <button @click="closeLogOutModal" type="submit" class="button-neutral btn btn-primary text-center text-nowrap">Loobu</button>
     </template>
   </Modal>
 </template>

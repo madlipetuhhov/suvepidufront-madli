@@ -12,7 +12,7 @@
         Jah
       </button>
       <button @click="closeDeleteEventDetailModal" type="submit"
-              class="button-cancel btn btn-primary text-center text-nowrap">Loobu
+              class="button-neutral btn btn-primary text-center text-nowrap">Loobu
       </button>
     </template>
   </Modal>

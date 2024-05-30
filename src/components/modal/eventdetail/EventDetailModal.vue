@@ -10,15 +10,11 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Algus </label>
-<!--        <input v-model="eventDetailInfo.startTime" type="text" class="form-control" placeholder="_:_">-->
         <input v-model="eventDetailInfo.startTime" class="time-picker" type="time">
-
       </div>
       <div class="mb-3">
         <label class="form-label">Lõpp </label>
-<!--        <input v-model="eventDetailInfo.endTime" type="text" class="form-control" placeholder="_:_">-->
         <input v-model="eventDetailInfo.endTime" class="time-picker" type="time">
-
       </div>
       <div class="mb-3">
         <label class="form-label">Maakond</label>
@@ -42,7 +38,7 @@
               class="button-success btn btn-primary text-center text-nowrap">Lisa
       </button>
       <button v-else @click="editEventDetail" type="submit"
-              class="button-cancel btn btn-primary text-center text-nowrap">Salvesta
+              class="button-neutral btn btn-primary text-center text-nowrap">Salvesta
       </button>
       <button @click="closeEventDetailModal" type="submit"
               class="button-danger btn btn-primary text-center text-nowrap">Loobu

@@ -23,7 +23,7 @@
       <button @click="sendLogInRequest" type="submit" class="button-success btn btn-primary text-center text-nowrap">
         Logi sisse
       </button>
-      <button @click="executeNewUser" type="submit" class="button-cancel btn btn-primary text-center text-nowrap">Loo
+      <button @click="executeNewUser" type="submit" class="button-neutral btn btn-primary text-center text-nowrap">Loo
         konto
       </button>
     </template>
