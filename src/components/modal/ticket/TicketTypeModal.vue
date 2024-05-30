@@ -99,6 +99,7 @@ export default {
 
     handleOpenTicketTypeModal() {
       this.isAdd = true
+      this.resetTicketTypeModalData()
       this.$refs.modalRef.openModal()
     },
 
@@ -119,6 +120,10 @@ export default {
 
     closeTicketTypeModal() {
       this.$refs.modalRef.closeModal()
+    },
+
+    resetTicketTypeModalData() {
+      this.ticketTypeInfoExtended = {}
     },
 
   }

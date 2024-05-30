@@ -9,13 +9,16 @@
         <input v-model="eventDetailInfo.date" type="date" class="form-control">
       </div>
       <div class="mb-3">
-        <label class="form-label">Algus</label>
-        <input v-model="eventDetailInfo.startTime" type="text" class="form-control" placeholder="_:_">
+        <label class="form-label">Algus: </label>
+<!--        <input v-model="eventDetailInfo.startTime" type="text" class="form-control" placeholder="_:_">-->
+        <input type="time" id="appt" name="appt">
 
       </div>
       <div class="mb-3">
-        <label class="form-label">Lõpp</label>
-        <input v-model="eventDetailInfo.endTime" type="text" class="form-control" placeholder="_:_">
+        <label class="form-label">Lõpp: </label>
+<!--        <input v-model="eventDetailInfo.endTime" type="text" class="form-control" placeholder="_:_">-->
+        <input type="time" id="appt" name="appt">
+
       </div>
       <div class="mb-3">
         <label class="form-label">Maakond</label>
@@ -98,7 +101,6 @@ export default {
             }
           }
       ).then(() => {
-        this.resetEventDetailModalData()
         this.closeEventDetailModal()
         this.$emit('event-detail-edited-or-added')
       }).catch(() => {
@@ -113,7 +115,6 @@ export default {
             }
           }
       ).then(() => {
-        this.resetEventDetailModalData()
         this.closeEventDetailModal()
         this.$emit('event-detail-edited-or-added')
       }).catch(() => {
@@ -123,6 +124,7 @@ export default {
 
     handleOpenEventDetailModal() {
       this.isAdd = true
+      this.resetEventDetailModalData()
       this.$refs.modalRef.openModal()
     },
 
