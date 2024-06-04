@@ -1,7 +1,22 @@
 <template>
   <div>
-    <input ref="fileInputRef" class="form-control" type="file" @change="handleImage" accept="image/x-png,image/jpeg,image/gif">
+    <!--    <input ref="fileInputRef" class="form-control" type="file" @change="handleImage" accept="image/x-png,image/jpeg,image/gif">-->
+
+    <div class="custom-file">
+      <div class="input-group custom-file-button">
+        <label class="input-group-text" for="inputGroupFile">{{ fileName }}</label>
+        <input
+            ref="fileInputRef"
+            class="form-control"
+            type="file"
+            @change="handleImage"
+            accept="image/x-png,image/jpeg,image/gif"
+            id="customFile"
+        />
+      </div>
+    </div>
   </div>
+
 </template>
 <script>
 export default {
@@ -9,12 +24,18 @@ export default {
 
   data() {
     return {
-      imageData: String
+      imageData: String,
+      fileName: "Pilt"
     }
   },
   methods: {
     handleImage(event) {
       const selectedImage = event.target.files[0];
+      if (selectedImage) {
+        this.fileName = "Pildi lisamine";
+      } else {
+        this.fileName = "Pilt";
+      }
       this.emitNewImageData(selectedImage);
     },
 

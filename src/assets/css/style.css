@@ -56,6 +56,42 @@ body {
     transform: translateX(-50%); /* Teisendab X-telje piki -50% võrra */
 }
 
+/* IMAGE INPUT */
+.custom-file-button {
+    display: flex;
+    align-items: center;
+}
+
+.custom-file-button .input-group-text {
+    white-space: nowrap;
+}
+
+.custom-file-label::after {
+    content: "";
+}
+
+.custom-file-button {
+    input[type="file"] {
+        margin-left: -2px !important;
+
+        &::-webkit-file-upload-button {
+            display: none;
+        }
+
+        &::file-selector-button {
+            display: none;
+        }
+    }
+
+    /*&:hover {*/
+    /*    label {*/
+    /*        background-color: #dde0e3;*/
+    /*        cursor: pointer;*/
+    /*    }*/
+    /*}*/
+}
+
+
 /* FEATURE CATEGORY RADIO BUTTONS */
 .form-check-input:checked {
     background-color: #7cb2d9;

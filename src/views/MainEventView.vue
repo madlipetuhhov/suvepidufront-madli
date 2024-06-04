@@ -7,7 +7,7 @@
       </div>
 
       <div class="input-group mb-3">
-        <span class="input-group-text me-3">Pealkiri</span>
+        <span class="input-group-text">Pealkiri</span>
         <input v-model="mainEventInfo.title" type="text" class="form-control ">
       </div>
 
