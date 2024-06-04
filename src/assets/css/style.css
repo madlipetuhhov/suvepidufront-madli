@@ -91,6 +91,14 @@ body {
     /*}*/
 }
 
+/* EVENT IMAGE*/
+.img-fluid {
+    border-radius: 6px;
+}
+
+.img-thumbnail{
+    border: 0;
+}
 
 /* FEATURE CATEGORY RADIO BUTTONS */
 .form-check-input:checked {

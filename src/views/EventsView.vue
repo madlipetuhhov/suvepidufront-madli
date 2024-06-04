@@ -13,7 +13,7 @@
           <thead>
           <tr>
             <th scope="col">Nimi</th>
-            <th scope="col">Kirjeldus</th>
+<!--            <th scope="col">Kirjeldus</th>-->
             <th scope="col">Pilt</th>
             <th scope="col">Võimalused ja kategooriad</th>
             <th scope="col">Toimumiskohad</th>
@@ -26,9 +26,9 @@
           <tbody v-if="this.selectedBusinessId !== 0">
           <tr v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
             <td>{{ mainEventInfo.title }}</td>
-            <td>{{ mainEventInfo.description }}</td>
+<!--            <td>{{ mainEventInfo.description }}</td>-->
             <td>
-              <EventImage :image-data="mainEventInfo.imageData"/>
+              <EventImageThumbnail :image-data="mainEventInfo.imageData"/>
             </td>
             <td>
               <button @click="navigateToFeaturesCategories(mainEventInfo.mainEventId)" type="button"
@@ -67,11 +67,12 @@
 import router from "@/router";
 import DeleteMainEventModal from "@/components/modal/mainevent/DeleteMainEventModal.vue";
 import BusinessDropdown from "@/components/event/BusinessDropdown.vue";
-import EventImage from "@/components/image/EventImage.vue";
+import EventImageThumbnail from "@/components/image/EventImageThumbnail.vue";
+
 
 export default {
   name: "EventsView",
-  components: {EventImage, BusinessDropdown, DeleteMainEventModal},
+  components: {EventImageThumbnail, BusinessDropdown, DeleteMainEventModal},
   data() {
     return {
       selectedBusinessId: 0,

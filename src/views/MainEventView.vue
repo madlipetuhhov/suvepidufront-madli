@@ -24,6 +24,10 @@
         <ImageInput @event-new-image-file-selected="setImageData"/>
       </div>
 
+      <div class="input-group mb-3">
+        <EventImage :image-data="mainEventInfo.imageData"/>
+      </div>
+
       <button @click="addOrUpdateMainEvent" type="submit"
               class="button-success btn btn-primary text-center text-nowrap">
         OK
@@ -42,11 +46,14 @@ import ImageInput from "@/components/event/ImageInput.vue";
 import router from "@/router";
 import FeatureCategoryInfo from "@/views/FeatureCategoryView.vue";
 import {useRoute} from "vue-router";
+import EventImage from "@/components/image/EventImage.vue";
+
+
 
 export default {
   name: 'MainEventView',
 
-  components: {FeatureCategoryInfo, ImageInput, BusinessDropdown},
+  components: {EventImage, FeatureCategoryInfo, ImageInput, BusinessDropdown},
   data() {
     return {
       selectedBusinessId: 0,

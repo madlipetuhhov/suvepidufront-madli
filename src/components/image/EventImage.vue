@@ -1,7 +1,8 @@
 <template>
-  <div >
-    <img style="height: 50px" v-if="imageData === ''" src="../../assets/logo.png" class="img-thumbnail" alt="pangaautomaadi vaikimisi pilt">
-    <img style="height: 50px" v-else :src="imageData" class="img-thumbnail" alt="pangaautomaadi kasutaia valitud pilt">
+  <div>
+    <img v-if="imageData === ''" src="../../assets/images/placeholder-image.jpg" class="img-fluid"
+         alt="sündmuse vaikimisi pilt">
+    <img v-else :src="imageData" class="img-fluid" alt="sündmuse korraldaja valitud pilt">
   </div>
 </template>
 <script>

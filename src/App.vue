@@ -2,7 +2,7 @@
   <LoginModal ref="loginModalRef" @event-update-nav-menu="updateNavMenu"/>
   <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
   <div class="logo mt-3">
-    <img src="../src/assets/logo.png" alt="company logo" height="200"/>
+    <img src="../src/assets/images/logo.png" alt="company logo" height="200"/>
   </div>
   <nav>
     <router-link to="/">AVALEHT</router-link>
