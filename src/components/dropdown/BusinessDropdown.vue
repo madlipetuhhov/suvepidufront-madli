@@ -18,7 +18,7 @@ export default {
 
   data() {
     return {
-      userId: Number(useRoute().query.userId),
+      userId: sessionStorage.getItem('userId'),
       selectedBusinessId: 0,
       businesses: [
         {
@@ -31,7 +31,7 @@ export default {
 
   methods: {
     sendGetBusinessesRequest() {
-      const userId = sessionStorage.getItem('userId')
+      const userId = this.userId
       if (userId) {
         this.$http.get('/businesses', {
           params: {

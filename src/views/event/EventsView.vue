@@ -1,19 +1,22 @@
 <template>
-  <div>
-    <DeleteMainEventModal @event-deleted="eventEventDeleted" ref="deleteMainEventModal"/>
-  </div>
   <div class="container text-center">
-    <h1>Minu sündmused - lisa ja muuda</h1>
-    <div class="row justify-content-center">
-      <div class="input-group mb-3">
+    <div>
+      <DeleteMainEventModal @event-deleted="eventEventDeleted" ref="deleteMainEventModal"/>
+    </div>
+    <div>
+      <!--      <AlertDanger :message="errorMessage"/>-->
+      <!--      <AlertSuccess :message="successMessage"/>-->
+      <h1>Minu sündmused - lisa ja muuda</h1>
+      <div class="input-group business-dropdown mb-3">
         <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"/>
       </div>
+    </div>
+    <div class="row justify-content-center">
       <div class="col-12">
         <table class="table">
           <thead>
           <tr>
             <th scope="col">Nimi</th>
-<!--            <th scope="col">Kirjeldus</th>-->
             <th scope="col">Pilt</th>
             <th scope="col">Võimalused ja kategooriad</th>
             <th scope="col">Toimumiskohad</th>
@@ -26,7 +29,6 @@
           <tbody v-if="this.selectedBusinessId !== 0">
           <tr v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
             <td>{{ mainEventInfo.title }}</td>
-<!--            <td>{{ mainEventInfo.description }}</td>-->
             <td>
               <EventImageThumbnail :image-data="mainEventInfo.imageData"/>
             </td>
@@ -36,12 +38,14 @@
               </button>
             </td>
             <td>
-              <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button" class="button-success btn btn-primary">
+              <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"
+                      class="button-success btn btn-primary">
                 Toimumiskohad
               </button>
             </td>
             <td>
-              <button @click="navigateToTicketTypes(mainEventInfo.mainEventId)" type="button" class="button-success btn btn-primary">
+              <button @click="navigateToTicketTypes(mainEventInfo.mainEventId)" type="button"
+                      class="button-success btn btn-primary">
                 Piletitüübid
               </button>
             </td>
@@ -68,11 +72,13 @@ import router from "@/router";
 import DeleteMainEventModal from "@/components/modal/mainevent/DeleteMainEventModal.vue";
 import BusinessDropdown from "@/components/dropdown/BusinessDropdown.vue";
 import EventImageThumbnail from "@/components/image/EventImageThumbnail.vue";
+import AlertDanger from "@/components/alert/AlertDanger.vue";
+import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 
 
 export default {
   name: "EventsView",
-  components: {EventImageThumbnail, BusinessDropdown, DeleteMainEventModal},
+  components: {AlertSuccess, AlertDanger, EventImageThumbnail, BusinessDropdown, DeleteMainEventModal},
   data() {
     return {
       selectedBusinessId: 0,
