@@ -7,7 +7,7 @@
       <div class="col col-5">
         <div class="input-group mb-3">
           <span class="input-group-text me-3">Vali konto tüüp</span>
-          <RolesDropdown @event-selected-role-change="setSelectedRoleId"/>
+          <RoleDropdown @event-selected-role-change="setSelectedRoleId"/>
         </div>
       </div>
     </div>
@@ -31,7 +31,9 @@
         <button @click="addNewUser" type="submit" class="button-success btn btn-primary text-center text-nowrap">
           OK
         </button>
-        <button @click="navigateToHomeView" type="submit" class="button-danger btn btn-primary text-center text-nowrap">Loobu</button>
+        <button @click="navigateToHomeView" type="submit" class="button-danger btn btn-primary text-center text-nowrap">
+          Loobu
+        </button>
       </div>
     </div>
 
@@ -41,14 +43,14 @@
 
 <script>
 
-import RolesDropdown from "@/components/dropdown/RolesDropdown.vue";
+import RoleDropdown from "@/components/dropdown/RoleDropdown.vue";
 import router from "@/router";
 import UserInfo from "@/views/newaccount/UserInfo.vue";
 import BusinessInfo from "@/views/newaccount/BusinessInfo.vue";
 
 export default {
   name: 'NewUserView',
-  components: {BusinessInfo, UserInfo, RolesDropdown},
+  components: {RoleDropdown, BusinessInfo, UserInfo},
   data() {
     return {
       selectedRoleId: 0,

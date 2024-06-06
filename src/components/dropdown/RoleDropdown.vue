@@ -8,7 +8,7 @@
 import router from "@/router";
 
 export default {
-  name: 'RolesDropdown',
+  name: 'RoleDropdown',
 
   data() {
     return {
