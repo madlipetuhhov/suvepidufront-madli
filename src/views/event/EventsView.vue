@@ -1,11 +1,11 @@
 <template>
   <div class="container text-center">
     <div>
-      <DeleteMainEventModal @event-deleted="eventEventDeleted" ref="deleteMainEventModal"/>
+      <DeleteMainEventModal @event-deleted="handleMainEventRemovedEvent" ref="deleteMainEventModal"/>
     </div>
     <div>
-      <!--      <AlertDanger :message="errorMessage"/>-->
-      <!--      <AlertSuccess :message="successMessage"/>-->
+      <AlertDanger :message="errorMessage"/>
+      <AlertSuccess :message="successMessage"/>
       <h1>Minu sündmused - lisa ja muuda</h1>
       <div class="input-group business-dropdown mb-3">
         <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"/>
@@ -81,8 +81,9 @@ export default {
   components: {AlertSuccess, AlertDanger, EventImageThumbnail, BusinessDropdown, DeleteMainEventModal},
   data() {
     return {
+      errorMessage: '',
+      successMessage: '',
       selectedBusinessId: 0,
-
       mainEvents: [
         {
           title: '',
@@ -137,11 +138,17 @@ export default {
       this.sendGetMainEventsRequest()
     },
 
-    eventEventDeleted() {
+    handleMainEventRemovedEvent() {
+      this.successMessage = 'Sündmus on edukalt kustutatud.'
+      setTimeout(this.resetAlertMessages, 4000)
       this.sendGetMainEventsRequest()
-    }
+    },
 
+    resetAlertMessages() {
+      this.errorMessage = ''
+      this.successMessage = ''
+      },
 
-  },
-}
+    },
+  }
 </script>

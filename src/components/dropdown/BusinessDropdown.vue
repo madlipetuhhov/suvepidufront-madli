@@ -10,8 +10,6 @@
 <script>
 
 import router from "@/router";
-import {config} from "@fortawesome/fontawesome-svg-core";
-import {useRoute} from "vue-router";
 
 export default {
   name: 'BusinessDropdown',
@@ -40,15 +38,11 @@ export default {
         })
             .then(response => {
               this.businesses = response.data
-              if (this.businesses.length > 0) {
-                this.selectedBusinessId = this.businesses[0].businessId;
-              }
-              this.emitSelectedBusinessId()
+              this.handleUserBusinessesDropdownSelection()
             })
             .catch(() => {
               router.push({name: 'errorRoute'})
             });
-
       } else {
         console.error('User ID not found in session storage.');
         router.push({name: 'errorRoute'});
@@ -56,8 +50,23 @@ export default {
 
     },
 
+    handleUserBusinessesDropdownSelection() {
+      if (this.businesses.length > 0) {
+        this.selectedBusinessId = this.businesses[0].businessId
+        this.emitSelectedBusinessId()
+      } else {
+        this.errorMessage = 'Sul ei ole ühtegi ettevõtet lisatud.'
+        setTimeout(this.resetAlertMessages, 4000)
+      }
+    },
+
     emitSelectedBusinessId() {
       this.$emit('event-selected-business-change', this.selectedBusinessId)
+    },
+
+    resetAlertMessages() {
+      this.errorMessage = ''
+      this.successMessage = ''
     },
 
   },
