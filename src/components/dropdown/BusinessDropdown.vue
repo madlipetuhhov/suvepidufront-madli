@@ -5,18 +5,22 @@
       {{ business.companyName }}
     </option>
   </select>
+  <AlertDanger :message="errorMessage"/>
 </template>
 
 <script>
 
 import router from "@/router";
+import AlertDanger from "@/components/alert/AlertDanger.vue";
 
 export default {
   name: 'BusinessDropdown',
+  components: {AlertDanger},
 
   data() {
     return {
       userId: sessionStorage.getItem('userId'),
+      errorMessage: '',
       selectedBusinessId: 0,
       businesses: [
         {
@@ -44,10 +48,8 @@ export default {
               router.push({name: 'errorRoute'})
             });
       } else {
-        console.error('User ID not found in session storage.');
         router.push({name: 'errorRoute'});
       }
-
     },
 
     handleUserBusinessesDropdownSelection() {
@@ -55,18 +57,12 @@ export default {
         this.selectedBusinessId = this.businesses[0].businessId
         this.emitSelectedBusinessId()
       } else {
-        this.errorMessage = 'Sul ei ole ühtegi ettevõtet lisatud.'
-        setTimeout(this.resetAlertMessages, 4000)
+        this.$emit('event-no-businesses-found')
       }
     },
 
     emitSelectedBusinessId() {
       this.$emit('event-selected-business-change', this.selectedBusinessId)
-    },
-
-    resetAlertMessages() {
-      this.errorMessage = ''
-      this.successMessage = ''
     },
 
   },

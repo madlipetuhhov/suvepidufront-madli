@@ -1,19 +1,20 @@
 <template>
   <div class="container text-center">
     <div>
-      <DeleteMainEventModal @event-deleted="handleMainEventRemovedEvent" ref="deleteMainEventModal"/>
+      <DeleteMainEventModal ref="deleteMainEventModal" @event-main-event-removed="handleMainEventRemovedEvent"/>
     </div>
     <div>
       <AlertDanger :message="errorMessage"/>
       <AlertSuccess :message="successMessage"/>
       <h1>Minu sündmused - lisa ja muuda</h1>
       <div class="input-group business-dropdown mb-3">
-        <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"/>
+        <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"
+                          @event-no-businesses-found="handleNoBusinessesFoundEvent"/>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-12">
-        <table v-if="mainEvents.length > 0" class="table">
+        <table class="table">
           <thead>
           <tr>
             <th scope="col">Nimi</th>
@@ -61,7 +62,7 @@
           </tbody>
 
         </table>
-        <font-awesome-icon v-if="mainEvents.length > 0" @click="navigateToAddEvent" :icon="['fas', 'plus']"/>
+        <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']"/>
       </div>
     </div>
   </div>
@@ -122,21 +123,28 @@ export default {
             }
           }
       ).then(response => {
-        this.mainEvents = response.data
-      }).catch(() => {
+            this.mainEvents = response.data
+            this.handleNoMainEventsFound()
+          }
+      ).catch(() => {
         router.push({name: 'errorRoute'})
       })
-    },
-
-    handleNoBusinessesOrEventsFound() {
-      if (this.businesses.length === 0) {
-        this.errorMessage = 'Sul ei ole ühtegi ettevõtet lisatud.'
-      }
     },
 
     setSelectedBusinessId(selectedBusinessId) {
       this.selectedBusinessId = selectedBusinessId;
       this.sendGetMainEventsRequest()
+    },
+
+    handleNoBusinessesFoundEvent() {
+      this.errorMessage = 'Sul ei ole ühtegi ettevõtet ja sündmust lisatud.'
+    },
+
+    handleNoMainEventsFound() {
+      if (this.mainEvents.length === 0) {
+        this.errorMessage = 'Sul ei ole ühtegi sündmust lisatud.';
+        setTimeout(this.resetAlertMessages, 4000)
+      }
     },
 
     handleMainEventRemovedEvent() {
@@ -154,7 +162,6 @@ export default {
       this.errorMessage = ''
       this.successMessage = ''
     },
-
   },
 }
 </script>
