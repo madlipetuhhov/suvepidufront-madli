@@ -1,6 +1,6 @@
 <template>
   <select v-model="selectedBusinessId" @change="emitSelectedBusinessId" class="form-select">
-<!--    <option selected disabled value="0">Vali ettevõte</option>-->
+    <option selected disabled value="0">Vali ettevõte</option>
     <option v-for="business in businesses" :value="business.businessId" :key="business.businessId">
       {{ business.companyName }}
     </option>
@@ -10,12 +10,15 @@
 <script>
 
 import router from "@/router";
+import {config} from "@fortawesome/fontawesome-svg-core";
+import {useRoute} from "vue-router";
 
 export default {
   name: 'BusinessDropdown',
 
   data() {
     return {
+      userId: Number(useRoute().query.userId),
       selectedBusinessId: 0,
       businesses: [
         {
@@ -28,17 +31,29 @@ export default {
 
   methods: {
     sendGetBusinessesRequest() {
-      this.$http.get('/businesses')
-          .then(response => {
-            this.businesses = response.data
-            if (this.businesses.length > 0) {
-              this.selectedBusinessId = this.businesses[0].businessId;
-            }
-            this.emitSelectedBusinessId()
-          })
-          .catch(() => {
-            router.push({name: 'errorRoute'})
-          })
+      const userId = sessionStorage.getItem('userId')
+      if (userId) {
+        this.$http.get('/businesses', {
+          params: {
+            userId: userId
+          }
+        })
+            .then(response => {
+              this.businesses = response.data
+              if (this.businesses.length > 0) {
+                this.selectedBusinessId = this.businesses[0].businessId;
+              }
+              this.emitSelectedBusinessId()
+            })
+            .catch(() => {
+              router.push({name: 'errorRoute'})
+            });
+
+      } else {
+        console.error('User ID not found in session storage.');
+        router.push({name: 'errorRoute'});
+      }
+
     },
 
     emitSelectedBusinessId() {
