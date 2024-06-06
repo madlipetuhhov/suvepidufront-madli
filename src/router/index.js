@@ -1,14 +1,14 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CheckoutView from "@/views/CheckoutView.vue";
-import NewUserView from "@/views/NewAccountView.vue";
+import NewUserView from "@/views/newaccount/NewAccountView.vue";
 import ErrorView from "@/views/ErrorView.vue";
-import MainEventView from "@/views/MainEventView.vue";
-import FeatureCategoryView from "@/views/FeatureCategoryView.vue";
-import EventDetailView from "@/views/EventDetailView.vue";
-import EventsView from "@/views/EventsView.vue";
-import EventTicketTypeView from "@/views/EventTicketTypeView.vue";
-import EventTicketView from "@/views/EventTicketView.vue";
+import MainEventView from "@/views/event/MainEventView.vue";
+import FeatureCategoryView from "@/views/event/FeatureCategoryView.vue";
+import EventDetailView from "@/views/event/EventDetailView.vue";
+import EventsView from "@/views/event/EventsView.vue";
+import EventTicketTypeView from "@/views/event/EventTicketTypeView.vue";
+import EventTicketView from "@/views/event/EventTicketView.vue";
 
 const routes = [
     {

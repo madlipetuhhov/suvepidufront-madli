@@ -41,10 +41,10 @@
 
 </template>
 <script>
-import BusinessDropdown from "@/components/event/BusinessDropdown.vue";
-import ImageInput from "@/components/event/ImageInput.vue";
+import BusinessDropdown from "@/components/dropdown/BusinessDropdown.vue";
+import ImageInput from "@/components/image/ImageInput.vue";
 import router from "@/router";
-import FeatureCategoryInfo from "@/views/FeatureCategoryView.vue";
+import FeatureCategoryInfo from "@/views/event/FeatureCategoryView.vue";
 import {useRoute} from "vue-router";
 import EventImage from "@/components/image/EventImage.vue";
 

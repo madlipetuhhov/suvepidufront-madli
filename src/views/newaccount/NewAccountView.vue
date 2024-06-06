@@ -41,10 +41,10 @@
 
 <script>
 
-import RolesDropdown from "@/components/newaccount/RolesDropdown.vue";
+import RolesDropdown from "@/components/dropdown/RolesDropdown.vue";
 import router from "@/router";
-import UserInfo from "@/components/newaccount/UserInfo.vue";
-import BusinessInfo from "@/components/newaccount/BusinessInfo.vue";
+import UserInfo from "@/views/newaccount/UserInfo.vue";
+import BusinessInfo from "@/views/newaccount/BusinessInfo.vue";
 
 export default {
   name: 'NewUserView',

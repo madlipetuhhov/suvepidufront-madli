@@ -50,7 +50,7 @@
 <script>
 
 import Modal from "@/components/modal/Modal.vue";
-import CountyDropdown from "@/components/event/CountyDropdown.vue";
+import CountyDropdown from "@/components/dropdown/CountyDropdown.vue";
 import router from "@/router";
 import {useRoute} from "vue-router";
 

@@ -23,7 +23,7 @@
 <script>
 import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
-import TicketTypeDropdown from "@/components/event/TicketTypeDropdown.vue";
+import TicketTypeDropdown from "@/components/dropdown/TicketTypeDropdown.vue";
 
 export default {
   name: "TicketModal",
