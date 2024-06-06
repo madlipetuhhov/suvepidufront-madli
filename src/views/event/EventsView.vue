@@ -13,7 +13,7 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-12">
-        <table class="table">
+        <table v-if="mainEvents.length > 0" class="table">
           <thead>
           <tr>
             <th scope="col">Nimi</th>
@@ -61,7 +61,7 @@
           </tbody>
 
         </table>
-        <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']"/>
+        <font-awesome-icon v-if="mainEvents.length > 0" @click="navigateToAddEvent" :icon="['fas', 'plus']"/>
       </div>
     </div>
   </div>
@@ -128,13 +128,14 @@ export default {
       })
     },
 
-    openDeleteMainEventModal(mainEventId) {
-      this.$refs.deleteMainEventModal.mainEventId = mainEventId;
-      this.$refs.deleteMainEventModal.$refs.modalRef.openModal()
+    handleNoBusinessesOrEventsFound() {
+      if (this.businesses.length === 0) {
+        this.errorMessage = 'Sul ei ole ühtegi ettevõtet lisatud.'
+      }
     },
 
     setSelectedBusinessId(selectedBusinessId) {
-      this.selectedBusinessId = selectedBusinessId
+      this.selectedBusinessId = selectedBusinessId;
       this.sendGetMainEventsRequest()
     },
 
@@ -144,11 +145,16 @@ export default {
       this.sendGetMainEventsRequest()
     },
 
+    openDeleteMainEventModal(mainEventId) {
+      this.$refs.deleteMainEventModal.mainEventId = mainEventId;
+      this.$refs.deleteMainEventModal.$refs.modalRef.openModal()
+    },
+
     resetAlertMessages() {
       this.errorMessage = ''
       this.successMessage = ''
-      },
-
     },
-  }
+
+  },
+}
 </script>
