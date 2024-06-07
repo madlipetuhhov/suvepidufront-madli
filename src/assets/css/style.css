@@ -1,9 +1,57 @@
+body {
+    background-color: #fbf9f6;
+    font-family: "Montserrat", sans-serif;
+    color: #202217;
+    --bs-heading-color: #202217
+}
+
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
 
-body {
-    background-color: #ede1d1;
+/* NAVIGATION MENU */
+#app {
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    padding: 30px;
+}
+
+nav a {
+    font-weight: bold;
+    color: #202217;
+}
+
+nav a.router-link-exact-active {
+    background-color: #6A704C;
+}
+
+/* ICONS */
+.icon {
+    color: #6A704C;
+}
+
+.icon:hover{
+    color: #40432e;
+}
+
+.icon-delete{
+    color: #c52626;
+}
+
+.icon-delete:hover{
+    color: #761717;
 }
 
 /* BUTTONS */
@@ -14,7 +62,7 @@ body {
 }
 
 .button-success:hover {
-    background-color: #434831;
+    background-color: #888d70;
 }
 
 .button-danger {
@@ -23,7 +71,7 @@ body {
 }
 
 .button-danger:hover {
-    background-color: #6b0b0b;
+    background-color: #d15151;
 }
 
 .button-neutral {
@@ -32,7 +80,7 @@ body {
 }
 
 .button-neutral:hover {
-    background-color: #3e5a6c;
+    background-color: #7c9cb2;
 }
 
 /* MODAL */
@@ -89,7 +137,7 @@ body {
     border-radius: 6px;
 }
 
-.img-thumbnail{
+.img-thumbnail {
     border: 0;
 }
 
@@ -122,6 +170,50 @@ body {
 }
 
 /* BUSINESS DROPDOWN */
-.business-dropdown{
+.business-dropdown {
     width: 230px;
+}
+
+/* EVENTS CARDS */
+.event {
+    /* values: horizontal offset between box and shadow, vertical offset, blur of shadow,
+    optinal value: shadow scale / shadow radius, color of shadow */
+    box-shadow: 0 20px 30px 0px rgb(0, 0, 0, 0.07);
+    border-radius: 6px;
+}
+
+.event-img {
+    padding: 24px;
+}
+
+.event-box {
+    padding: 24px;
+}
+
+h3 {
+    margin-bottom: 24px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.event-buttons {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.event-buttons li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.event-buttons li:last-child {
+    margin-bottom: 0;
+}
+
+.event-edit-delete {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
 }

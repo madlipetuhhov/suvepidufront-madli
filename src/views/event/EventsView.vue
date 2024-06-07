@@ -1,70 +1,106 @@
 <template>
   <div class="container text-center">
     <div>
-      <DeleteMainEventModal ref="deleteMainEventModal" @event-main-event-removed="handleMainEventRemovedEvent"/>
-    </div>
-    <div>
       <AlertDanger :message="errorMessage"/>
       <AlertSuccess :message="successMessage"/>
+      <DeleteMainEventModal ref="deleteMainEventModal" @event-main-event-removed="handleMainEventRemovedEvent"/>
       <h1>Minu sündmused - lisa ja muuda</h1>
       <div class="input-group business-dropdown mb-3">
         <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"
                           @event-no-businesses-found="handleNoBusinessesFoundEvent"/>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <table class="table">
-          <thead>
-          <tr>
-            <th scope="col">Nimi</th>
-            <th scope="col">Pilt</th>
-            <th scope="col">Võimalused ja kategooriad</th>
-            <th scope="col">Toimumiskohad</th>
-            <th scope="col">Piletitüübid</th>
-            <th scope="col">Muuda</th>
-            <th scope="col">Kustuta</th>
-          </tr>
-          </thead>
 
-          <tbody v-if="this.selectedBusinessId !== 0">
-          <tr v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
-            <td>{{ mainEventInfo.title }}</td>
-            <td>
-              <EventImageThumbnail :image-data="mainEventInfo.imageData"/>
-            </td>
-            <td>
+
+    <div>
+      <figure class="event" v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
+        <EventImage class="event-img" :image-data="mainEventInfo.imageData"/>
+        <div class="event-box">
+          <h3>{{ mainEventInfo.title }}</h3>
+          <ul class="event-buttons">
+            <li>
               <button @click="navigateToFeaturesCategories(mainEventInfo.mainEventId)" type="button"
                       class="button-success btn btn-primary">Võimalused ja kategooriad
               </button>
-            </td>
-            <td>
+            </li>
+            <li>
               <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"
                       class="button-success btn btn-primary">
                 Toimumiskohad
               </button>
-            </td>
-            <td>
+            </li>
+            <li>
               <button @click="navigateToTicketTypes(mainEventInfo.mainEventId)" type="button"
                       class="button-success btn btn-primary">
                 Piletitüübid
               </button>
-            </td>
-            <td>
-              <font-awesome-icon @click="navigateToEditEvent(mainEventInfo.mainEventId)" class="cursor-pointer"
-                                 :icon="['far', 'pen-to-square']"/>
-            </td>
-            <td>
-              <font-awesome-icon @click="openDeleteMainEventModal(mainEventInfo.mainEventId)" class="cursor-pointer"
-                                 :icon="['far', 'trash-can']"/>
-            </td>
-          </tr>
-          </tbody>
-
-        </table>
-        <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']"/>
-      </div>
+            </li>
+          </ul>
+          <div class="event-edit-delete">
+            <font-awesome-icon @click="navigateToEditEvent(mainEventInfo.mainEventId)" class="cursor-pointer icon"
+                               :icon="['far', 'pen-to-square']"/>
+            <font-awesome-icon @click="openDeleteMainEventModal(mainEventInfo.mainEventId)" class="cursor-pointer icon-delete"
+                               :icon="['far', 'trash-can']"/>
+          </div>
+        </div>
+      </figure>
+      <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
     </div>
+
+
+<!--    <div class="row justify-content-center">-->
+<!--      <div class="col-12">-->
+<!--        <table class="table">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th scope="col">Nimi</th>-->
+<!--            <th scope="col">Pilt</th>-->
+<!--            <th scope="col">Võimalused ja kategooriad</th>-->
+<!--            <th scope="col">Toimumiskohad</th>-->
+<!--            <th scope="col">Piletitüübid</th>-->
+<!--            <th scope="col">Muuda</th>-->
+<!--            <th scope="col">Kustuta</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+
+<!--          <tbody v-if="this.selectedBusinessId !== 0">-->
+<!--          <tr v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">-->
+<!--            <td>{{ mainEventInfo.title }}</td>-->
+<!--            <td>-->
+<!--              <EventImageThumbnail :image-data="mainEventInfo.imageData"/>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--              <button @click="navigateToFeaturesCategories(mainEventInfo.mainEventId)" type="button"-->
+<!--                      class="button-success btn btn-primary">Võimalused ja kategooriad-->
+<!--              </button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--              <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"-->
+<!--                      class="button-success btn btn-primary">-->
+<!--                Toimumiskohad-->
+<!--              </button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--              <button @click="navigateToTicketTypes(mainEventInfo.mainEventId)" type="button"-->
+<!--                      class="button-success btn btn-primary">-->
+<!--                Piletitüübid-->
+<!--              </button>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--              <font-awesome-icon @click="navigateToEditEvent(mainEventInfo.mainEventId)" class="cursor-pointer"-->
+<!--                                 :icon="['far', 'pen-to-square']"/>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--              <font-awesome-icon @click="openDeleteMainEventModal(mainEventInfo.mainEventId)" class="cursor-pointer"-->
+<!--                                 :icon="['far', 'trash-can']"/>-->
+<!--            </td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+
+<!--        </table>-->
+
+<!--      </div>-->
+<!--    </div>-->
   </div>
 
 </template>
@@ -75,11 +111,12 @@ import BusinessDropdown from "@/components/dropdown/BusinessDropdown.vue";
 import EventImageThumbnail from "@/components/image/EventImageThumbnail.vue";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
 import AlertSuccess from "@/components/alert/AlertSuccess.vue";
+import EventImage from "@/components/image/EventImage.vue";
 
 
 export default {
   name: "EventsView",
-  components: {AlertSuccess, AlertDanger, EventImageThumbnail, BusinessDropdown, DeleteMainEventModal},
+  components: {EventImage, AlertSuccess, AlertDanger, EventImageThumbnail, BusinessDropdown, DeleteMainEventModal},
   data() {
     return {
       errorMessage: '',
