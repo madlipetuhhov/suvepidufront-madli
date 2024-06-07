@@ -33,8 +33,9 @@ nav a {
     color: #202217;
 }
 
-nav a.router-link-exact-active {
-    background-color: #6A704C;
+nav a:hover{
+    color: #6A704C;
+    text-decoration: underline;
 }
 
 /* ICONS */
@@ -42,15 +43,15 @@ nav a.router-link-exact-active {
     color: #6A704C;
 }
 
-.icon:hover{
+.icon:hover {
     color: #40432e;
 }
 
-.icon-delete{
+.icon-delete {
     color: #c52626;
 }
 
-.icon-delete:hover{
+.icon-delete:hover {
     color: #761717;
 }
 
@@ -175,11 +176,42 @@ nav a.router-link-exact-active {
 }
 
 /* EVENTS CARDS */
+.events-view {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 36px;
+}
+
 .event {
     /* values: horizontal offset between box and shadow, vertical offset, blur of shadow,
     optinal value: shadow scale / shadow radius, color of shadow */
     box-shadow: 0 20px 30px 0px rgb(0, 0, 0, 0.07);
     border-radius: 6px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+
+}
+
+/* For screens smaller than 1200px, use 3 columns */
+@media (max-width: 1200px) {
+    .events-view {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* For screens smaller than 900px, use 2 columns */
+@media (max-width: 900px) {
+    .events-view {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For screens smaller than 600px, use 1 column */
+@media (max-width: 600px) {
+    .events-view {
+        grid-template-columns: 1fr;
+    }
 }
 
 .event-img {
@@ -197,7 +229,6 @@ h3 {
 }
 
 .event-buttons {
-    list-style: none;
     margin-bottom: 24px;
 }
 
@@ -213,7 +244,20 @@ h3 {
 }
 
 .event-edit-delete {
-    display: flex;
-    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
     font-size: 20px;
+    padding-left: 24px;
+    padding-right: 24px;
 }
+
+.button-events-card{
+    background-color: #6A704C;
+    border: #6A704C;
+}
+
+.button-events-card:hover{
+    background-color: #888d70;
+}
+
+
