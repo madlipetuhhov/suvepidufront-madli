@@ -10,24 +10,24 @@
           <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"
                             @event-no-businesses-found="handleNoBusinessesFoundEvent"/>
         </div>
-<!--        <div class="add-event">-->
-<!--          <p>Lisa sündmus:</p>-->
-<!--          <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>-->
-<!--        </div>-->
+        <!--        <div class="add-event">-->
+        <!--          <p>Lisa sündmus:</p>-->
+        <!--          <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>-->
+        <!--        </div>-->
       </div>
     </div>
 
     <div class="events-view">
 
       <figure class="event">
-        <img class="event-img img-fluid" src="../../assets/images/placeholder-image.jpg" alt="placeholder image"/>
+        <div class="event-img">
+          <img class="img-fluid" src="../../assets/images/placeholder-image.jpg" alt="placeholder image"/>
+        </div>
         <div class="event-box">
           <h3>Lisa sündmus</h3>
-          <ul class="add-new-event">
-            <li>
-              <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
-            </li>
-          </ul>
+          <div class="add-new-event">
+            <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
+          </div>
         </div>
       </figure>
 
@@ -38,13 +38,13 @@
           <ul class="event-buttons">
             <li>
               <button @click="navigateToFeaturesCategories(mainEventInfo.mainEventId)" type="button"
-                      class="button-events-card btn btn-primary">Võimalused ja kategooriad
+                      class="button-events-card btn btn-primary">Võimalused & kategooriad
               </button>
             </li>
             <li>
               <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"
                       class="button-events-card btn btn-primary">
-                Toimumiskohad
+                Toimumiskohad & piletid
               </button>
             </li>
             <li>
