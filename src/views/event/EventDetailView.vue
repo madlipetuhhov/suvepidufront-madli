@@ -4,7 +4,7 @@
     <DeleteEventDetailModal @event-detail-deleted="eventEventDetailDeleted" ref="deleteEventDetailModalRef"/>
   </div>
   <div class="container text-center">
-    <h2>{{ "Nimi: " + mainEventName }}</h2>
+    <h2>{{ mainEventName }}</h2>
     <div class="row justify-content-center">
       <div class="col-10">
 

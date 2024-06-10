@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center">
-    <h1>{{ "Nimi: " + mainEventName }}</h1>
+    <h1>{{ mainEventName }}</h1>
     <div class="row justify-content-center">
       <div class="col-8">
 
