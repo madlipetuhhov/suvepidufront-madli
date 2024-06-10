@@ -10,14 +10,28 @@
           <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"
                             @event-no-businesses-found="handleNoBusinessesFoundEvent"/>
         </div>
-        <div class="add-event">
-          <p>Lisa sündmus:</p>
-          <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
-        </div>
+<!--        <div class="add-event">-->
+<!--          <p>Lisa sündmus:</p>-->
+<!--          <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>-->
+<!--        </div>-->
       </div>
     </div>
 
     <div class="events-view">
+
+      <figure class="event">
+        <img class="event-img img-fluid" src="../../assets/images/placeholder-image.jpg" alt="placeholder image"/>
+        <div class="event-box">
+          <h3>Lisa sündmus</h3>
+          <ul class="add-new-event">
+            <li>
+              <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
+            </li>
+          </ul>
+        </div>
+      </figure>
+
+
       <figure class="event" v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
         <EventImage class="event-img" :image-data="mainEventInfo.imageData"/>
         <div class="event-box">
