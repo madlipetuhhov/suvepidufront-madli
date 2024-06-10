@@ -31,7 +31,6 @@
         </div>
       </figure>
 
-
       <figure class="event" v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
         <EventImage class="event-img" :image-data="mainEventInfo.imageData"/>
         <div class="event-box">
@@ -72,6 +71,7 @@
           </li>
         </ul>
       </figure>
+
     </div>
   </div>
 
@@ -80,14 +80,13 @@
 import router from "@/router";
 import DeleteMainEventModal from "@/components/modal/mainevent/DeleteMainEventModal.vue";
 import BusinessDropdown from "@/components/dropdown/BusinessDropdown.vue";
-import EventImageThumbnail from "@/components/image/EventImageThumbnail.vue";
 import AlertDanger from "@/components/alert/AlertDanger.vue";
 import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 import EventImage from "@/components/image/EventImage.vue";
 
 export default {
   name: "EventsView",
-  components: {EventImage, AlertSuccess, AlertDanger, EventImageThumbnail, BusinessDropdown, DeleteMainEventModal},
+  components: {EventImage, AlertSuccess, AlertDanger, BusinessDropdown, DeleteMainEventModal},
   data() {
     return {
       errorMessage: '',
