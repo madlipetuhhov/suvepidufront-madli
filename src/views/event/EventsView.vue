@@ -19,18 +19,6 @@
 
     <div class="events-view">
 
-      <figure class="event">
-        <div class="event-img">
-          <img class="img-fluid" src="../../assets/images/placeholder-image.jpg" alt="placeholder image"/>
-        </div>
-        <div class="event-box">
-          <h3>Lisa sündmus</h3>
-          <div class="add-new-event">
-            <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
-          </div>
-        </div>
-      </figure>
-
       <figure class="event" v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
         <EventImage class="event-img" :image-data="mainEventInfo.imageData"/>
         <div class="event-box">
@@ -70,6 +58,18 @@
                                :icon="['far', 'trash-can']"/>
           </li>
         </ul>
+      </figure>
+
+      <figure class="event">
+        <div class="event-img">
+          <img class="img-fluid" src="../../assets/images/placeholder-image.jpg" alt="placeholder image"/>
+        </div>
+        <div class="event-box">
+          <h3>Lisa sündmus</h3>
+          <div class="add-new-event">
+            <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
+          </div>
+        </div>
       </figure>
 
     </div>
