@@ -23,12 +23,16 @@
           </tr>
           </tbody>
         </table>
-        <font-awesome-icon @click="openTicketTypeModal" :icon="['fas', 'plus']"/>
+
+        <div>
+          <font-awesome-icon @click="openTicketTypeModal" :icon="['fas', 'plus']"/>
+        </div>
+
       </div>
     </div>
 
     <div>
-      <TicketTypeModal ref="ticketTypesModalRef" @event-ticket-type-edited-or-added="eventTicketTypeEditedOrAdded"/>
+      <TicketTypeModal ref="ticketTypesModalRef" @event-ticket-type-edited-or-added="sendGetTicketTypesRequest"/>
     </div>
 
   </div>
@@ -92,10 +96,6 @@ export default {
       this.$refs.ticketTypesModalRef.handleOpenTicketTypeModalAsEdit(ticketTypeId)
     },
 
-
-    eventTicketTypeEditedOrAdded() {
-      this.sendGetTicketTypesRequest()
-    },
   },
 
   beforeMount() {

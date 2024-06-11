@@ -35,7 +35,8 @@
             <!--            <td>{{ eventDetail.latitude }}</td>-->
 
             <td>
-              <button @click="navigateToEventTickets" type="button" class="button-success btn btn-primary">Piletid</button>
+              <button @click="navigateToEventTickets" type="button" class="button-success btn btn-primary">Piletid
+              </button>
             </td>
 
             <td>
@@ -47,14 +48,13 @@
               <font-awesome-icon @click="openDeleteEventDetailModal" class="cursor-pointer"
                                  :icon="['far', 'trash-can']"/>
             </td>
-
           </tr>
           </tbody>
-
         </table>
 
-          <font-awesome-icon @click="openEventDetailModal" :icon="['fas', 'plus']"></font-awesome-icon>
-
+        <div>
+          <font-awesome-icon @click="openEventDetailModal" :icon="['fas', 'plus']"/>
+        </div>
 
       </div>
     </div>
@@ -123,6 +123,11 @@ export default {
       })
     },
 
+    navigateToEventTickets(eventDetailId) {
+      // this.eventDetails.eventDetailId = eventDetailId
+      router.push({name: 'eventTicketRoute', query: {mainEventId: eventDetailId}})
+    },
+
     openEventDetailModal() {
       this.$refs.eventDetailModalRef.handleOpenEventDetailModal()
     },
@@ -144,9 +149,6 @@ export default {
       this.$refs.deleteEventDetailModalRef.$refs.modalRef.openModal()
     },
 
-    navigateToEventTickets() {
-      router.push({name: 'eventTicketRoute'})
-    },
   },
 
   beforeMount() {

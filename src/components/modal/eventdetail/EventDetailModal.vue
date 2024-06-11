@@ -34,10 +34,10 @@
       </div>
     </template>
     <template #buttons>
-      <button v-if="isAdd" @click="addEventDetail" type="submit"
+      <button v-if="isAdd" @click="sendAddEventDetailRequest" type="submit"
               class="button-success btn btn-primary text-center text-nowrap">Lisa
       </button>
-      <button v-else @click="editEventDetail" type="submit"
+      <button v-else @click="sendPutEventDetailRequest" type="submit"
               class="button-neutral btn btn-primary text-center text-nowrap">Salvesta
       </button>
       <button @click="closeEventDetailModal" type="submit"
@@ -75,21 +75,6 @@ export default {
     }
   },
   methods: {
-    sendGetEventDetailRequest() {
-      this.$http.get("/event/detail", {
-            params: {
-              eventDetailId: this.eventDetailId
-            }
-          }
-      ).then(response => {
-        this.eventDetailInfo = response.data
-        this.$refs.modalRef.openModal()
-        setTimeout(this.setCountyDropdownSelectedCountyId, 500)
-      }).catch(() => {
-        router.push({name: 'errorRoute'})
-      })
-    },
-
     sendAddEventDetailRequest() {
       this.$http.post("/event/detail", this.eventDetailInfo, {
             params: {
@@ -118,6 +103,21 @@ export default {
       })
     },
 
+    sendGetEventDetailRequest() {
+      this.$http.get("/event/detail", {
+            params: {
+              eventDetailId: this.eventDetailId
+            }
+          }
+      ).then(response => {
+        this.eventDetailInfo = response.data
+        this.$refs.modalRef.openModal()
+        setTimeout(this.setCountyDropdownSelectedCountyId, 500)
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    },
+
     handleOpenEventDetailModal() {
       this.isAdd = true
       this.resetEventDetailModalData()
@@ -140,14 +140,6 @@ export default {
 
     resetEventDetailModalData() {
       this.eventDetailInfo = {}
-    },
-
-    addEventDetail() {
-      this.sendAddEventDetailRequest()
-    },
-
-    editEventDetail() {
-      this.sendPutEventDetailRequest()
     },
 
     closeEventDetailModal() {

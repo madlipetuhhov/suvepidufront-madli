@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>{{ isAdd ? "Lisa piletite tüübid" : "Muuda piletitüüpi" }}</h3>
+      <h3>{{ isAdd ? "Lisa piletitüüp ja hind" : "Muuda piletitüüpi ja hinda" }}</h3>
     </template>
     <template #body>
       <div class="container text-start">
@@ -21,8 +21,8 @@
       </div>
     </template>
     <template #buttons>
-      <button v-if="isAdd" @click="addTicketType" type="button" class="btn button-success btn-primary">Lisa</button>
-      <button v-else @click="editTicketType" type="button" class="btn button-neutral btn-primary">Salvesta</button>
+      <button v-if="isAdd" @click="sendAddTicketTypeRequest" type="button" class="btn button-success btn-primary">Lisa</button>
+      <button v-else @click="sendPutEditTicketTypeRequest" type="button" class="btn button-neutral btn-primary">Salvesta</button>
       <button @click="closeTicketTypeModal" type="button"
               class="button-danger btn btn-primary text-center text-nowrap">Loobu
       </button>
@@ -53,15 +53,13 @@ export default {
     }
   },
   methods: {
-
-
     sendAddTicketTypeRequest() {
       const ticketTypeInfo = {
         ticketTypeName: this.ticketTypeInfoExtended.ticketTypeName,
         ticketTypePrice: this.ticketTypeInfoExtended.ticketTypePrice
       }
 
-      this.$http.post("ticket-type", ticketTypeInfo, {
+      this.$http.post("/ticket-type", ticketTypeInfo, {
             params: {
               mainEventId: this.mainEventId
             }
@@ -108,14 +106,6 @@ export default {
       this.ticketTypeId = ticketTypeId
       this.sendGetTicketTypeRequest(ticketTypeId)
       this.$refs.modalRef.openModal()
-    },
-
-    addTicketType() {
-      this.sendAddTicketTypeRequest()
-    },
-
-    editTicketType() {
-      this.sendPutEditTicketTypeRequest()
     },
 
     closeTicketTypeModal() {

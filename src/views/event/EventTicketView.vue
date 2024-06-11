@@ -1,7 +1,6 @@
 <template>
-  <TicketModal ref="ticketModalRef"/>
   <div class="container text-center">
-    <!--<h1>{{"Tere " + mainEventName}}</h1>-->
+    <h1>{{ "Tere " + mainEventName }}</h1>
     <h1>mainEventNameTest</h1>
     <div class="row justify-content-center">
       <div class="col-8">
@@ -9,9 +8,8 @@
           <thead>
           <tr>
             <th scope="col">Piletitüüp</th>
-            <th scope="col">Kogu piletite arv</th>
-            <th scope="col">Saadaval</th>
-            <th scope="col">Staatus</th>
+            <th scope="col">Piletite kogus</th>
+            <th scope="col">Saadaval piletid</th>
             <th scope="col">Muuda</th>
             <th scope="col">Kustuta</th>
           </tr>
@@ -21,18 +19,26 @@
             <td>{{ ticketInfo.ticketTypeName }}</td>
             <td>{{ ticketInfo.total }}</td>
             <td>{{ ticketInfo.available }}</td>
-            <td>{{ ticketInfo.status }}</td>
-            <td><font-awesome-icon @click="navigateToEditEvent(mainEventInfo.mainEventId)" class="cursor-pointer"
-                                   :icon="['far', 'pen-to-square']"/></td>
-            <td><font-awesome-icon @click="openDeleteMainEventModal(mainEventInfo.mainEventId)" class="cursor-pointer"
-                                   :icon="['far', 'trash-can']"/></td>
+            <td>
+              <font-awesome-icon @click="openTicketEditModal(tickets.eventTicketId)" class="cursor-pointer"
+                                 :icon="['far', 'pen-to-square']"/>
+            </td>
           </tr>
           </tbody>
         </table>
-        <font-awesome-icon @click="openTicketModal" :icon="['fas', 'plus']" style="cursor: pointer"/>
+
+        <div>
+          <font-awesome-icon @click="openTicketModal" :icon="['fas', 'plus']"/>
+        </div>
+
       </div>
     </div>
   </div>
+
+  <div>
+    <TicketModal ref="ticketModalRef" @event-tickets-edited-or-added="sendGetEventTicketsRequest"/>
+  </div>
+
 </template>
 <script>
 import router from "@/router";
@@ -40,34 +46,26 @@ import TicketModal from "@/components/modal/ticket/TicketModal.vue";
 import {useRoute} from "vue-router";
 
 export default {
-  name: "EventTicketTypesView",
+  name: "EventTicketView",
   components: {TicketModal},
 
   data() {
     return {
-      mainEventId: useRoute().query.mainEventId,
+      eventDetailId: useRoute().query.eventDetailId,
       mainEventName: '',
-      eventDetailId: 1,
       tickets: [
         {
           eventTicketId: 0,
           ticketTypeName: '',
           total: 0,
-          available: 0,
-          status: ''
+          available: 0
         }
       ]
     }
   },
   methods: {
-    navigateToFeaturesCategories() {
-      router.push({name: 'featureCategoryRoute'})
-    },
-    openTicketModal() {
-      this.$refs.ticketModalRef.$refs.modalRef.openModal()
-    },
     sendGetEventTicketsRequest() {
-      this.$http.get("/event/tickets", {
+      this.$http.get("/tickets", {
         params: {
           eventDetailId: this.eventDetailId
         }
@@ -77,6 +75,7 @@ export default {
         router.push({name: 'errorRoute'})
       })
     },
+
     sendGetMainEventNameRequest() {
       this.$http.get("/event/main", {
             params: {
@@ -89,10 +88,18 @@ export default {
         router.push({name: 'errorRoute'})
       })
     },
+
+    openTicketModal() {
+      this.$refs.ticketModalRef.handleOpenTicketModal()
+    },
+
+    openTicketEditModal(eventTicketId) {
+      this.$refs.ticketModalRef.handleOpenTicketModalAsEdit(eventTicketId)
+    },
   },
   beforeMount() {
     this.sendGetEventTicketsRequest()
-    // this.sendGetMainEventNameRequest()
+    this.sendGetMainEventNameRequest()
   },
 }
 </script>

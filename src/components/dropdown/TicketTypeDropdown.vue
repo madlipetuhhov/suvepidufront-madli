@@ -1,9 +1,8 @@
 <template>
-  <select v-model="selectedTypeId" @change="emitSelectedTypeId" class="form-select">
-    <option selected disabled value="0">Piletitüübid</option>
+  <select v-model="selectedTicketTypeId" @change="emitSelectedTicketTypeId" class="form-select">
+    <option selected disabled value="0">Vali piletitüüp</option>
     <option v-for="type in types" :value="type.ticketTypeId" :key="type.ticketTypeId">
-<!--      {{ type.ticketTypeName }}-->
-      <p>test</p>
+      {{ type.ticketTypeName }}
     </option>
   </select>
 </template>
@@ -14,8 +13,7 @@ export default {
   name: 'TicketTypeDropdown',
   data() {
     return {
-      mainEventId: 1,
-      selectedTypeId: 0,
+      selectedTicketTypeId: 0,
       types: [
         {
           ticketTypeId: 0,
@@ -25,8 +23,8 @@ export default {
     }
   },
   methods: {
-    sendGetEventTicketTypeRequest() {
-      this.$http.get("/event/ticket-types", {
+    sendGetTicketTypesRequest() {
+      this.$http.get("/ticket-types", {
             params: {
               mainEventId: this.mainEventId
             }
@@ -37,13 +35,13 @@ export default {
         router.push({name: 'errorRoute'})
       })
     },
-    emitSelectedTypeId() {
-      this.$emit('event-selected-ticketType-change', this.selectedTypeId)
+    emitSelectedTicketTypeId() {
+      this.$emit('event-selected-ticket-type-change', this.selectedTicketTypeId)
     },
   },
 
   beforeMount() {
-    this.sendGetEventTicketTypeRequest()
+    this.sendGetTicketTypesRequest()
   }
 }
 </script>
