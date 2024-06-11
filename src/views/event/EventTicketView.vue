@@ -1,7 +1,6 @@
 <template>
   <div class="container text-center">
-    <h1>{{ "Tere " + mainEventName }}</h1>
-    <h1>mainEventNameTest</h1>
+    <h1>{{ mainEventName }}</h1>
     <div class="row justify-content-center">
       <div class="col-8">
         <table class="table">
@@ -11,7 +10,6 @@
             <th scope="col">Piletite kogus</th>
             <th scope="col">Saadaval piletid</th>
             <th scope="col">Muuda</th>
-            <th scope="col">Kustuta</th>
           </tr>
           </thead>
           <tbody>
@@ -76,18 +74,18 @@ export default {
       })
     },
 
-    // sendGetMainEventNameRequest() {
-    //   this.$http.get("/event/main", {
-    //         params: {
-    //           mainEventId: this.mainEventId
-    //         }
-    //       }
-    //   ).then(response => {
-    //     this.mainEventName = response.data.title
-    //   }).catch(() => {
-    //     router.push({name: 'errorRoute'})
-    //   })
-    // },
+    sendGetMainEventNameRequest() {
+      this.$http.get("/event/name", {
+            params: {
+              eventDetailId: this.eventDetailId
+            }
+          }
+      ).then(response => {
+        this.mainEventName = response.data
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    },
 
     openTicketModal() {
       this.$refs.ticketModalRef.handleOpenTicketModal()
@@ -99,7 +97,7 @@ export default {
   },
   beforeMount() {
     this.sendGetEventTicketsRequest()
-    // this.sendGetMainEventNameRequest()
-  },
+    this.sendGetMainEventNameRequest()
+  }
 }
 </script>
