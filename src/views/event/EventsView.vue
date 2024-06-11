@@ -17,33 +17,33 @@
       </div>
     </div>
 
-    <div class="events-view">
+    <div class="event-cards">
 
-      <figure class="event" v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
+      <figure class="event-card" v-for="mainEventInfo in mainEvents" :key="mainEventInfo.mainEventId">
         <EventImage class="event-img" :image-data="mainEventInfo.imageData"/>
-        <div class="event-box">
+        <div class="event-info">
           <h3>{{ mainEventInfo.title }}</h3>
-          <ul class="event-buttons">
+          <ul class="buttons-event-card">
             <li>
               <button @click="navigateToFeaturesCategories(mainEventInfo.mainEventId)" type="button"
-                      class="button-events-card btn btn-primary">Võimalused & kategooriad
+                      class="button-event-card btn btn-primary">Võimalused & kategooriad
               </button>
             </li>
             <li>
               <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"
-                      class="button-events-card btn btn-primary">
+                      class="button-event-card btn btn-primary">
                 Toimumiskohad & piletid
               </button>
             </li>
             <li>
               <button @click="navigateToTicketTypes(mainEventInfo.mainEventId)" type="button"
-                      class="button-events-card btn btn-primary">
+                      class="button-event-card btn btn-primary">
                 Piletitüübid
               </button>
             </li>
           </ul>
         </div>
-        <ul class="event-edit-view-delete">
+        <ul class="icons-event-card">
           <li>
             <font-awesome-icon @click="navigateToEditEvent(mainEventInfo.mainEventId)" class="cursor-pointer icon"
                                :icon="['far', 'pen-to-square']"/>
@@ -60,13 +60,13 @@
         </ul>
       </figure>
 
-      <figure class="event">
+      <figure class="event-card">
         <div class="event-img">
           <img class="img-fluid" src="../../assets/images/placeholder-image.jpg" alt="placeholder image"/>
         </div>
-        <div class="event-box">
+        <div class="event-info">
           <h3>Lisa sündmus</h3>
-          <div class="add-new-event">
+          <div class="icon-event-card-new">
             <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
           </div>
         </div>
