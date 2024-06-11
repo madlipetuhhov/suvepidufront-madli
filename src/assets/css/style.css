@@ -243,7 +243,7 @@ nav a:hover {
 }
 
 .event-img {
-    padding: 0; /* Remove padding to ensure proper image positioning */
+    padding: 0;
     max-height: 200px;
     display: flex;
     align-items: center;
@@ -302,6 +302,8 @@ nav a:hover {
     padding: 10px 20px;
     color: #2a2d1e;
     cursor: pointer;
+    width: 100%; /* Ensure button takes full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .button-event-card:hover {
