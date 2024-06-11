@@ -28,7 +28,7 @@
         </table>
 
         <div>
-          <font-awesome-icon @click="openTicketModal" :icon="['fas', 'plus']"/>
+          <font-awesome-icon @click="openTicketModal" :icon="['fas', 'plus']" class="cursor-pointer"/>
         </div>
 
       </div>
