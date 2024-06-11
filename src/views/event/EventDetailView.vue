@@ -124,8 +124,7 @@ export default {
     },
 
     navigateToEventTickets(eventDetailId) {
-      // this.eventDetails.eventDetailId = eventDetailId
-      router.push({name: 'eventTicketRoute', query: {mainEventId: eventDetailId}})
+      router.push({name: 'eventTicketRoute', query: {eventDetailId: eventDetailId}});
     },
 
     openEventDetailModal() {

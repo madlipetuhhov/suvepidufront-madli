@@ -51,7 +51,7 @@ export default {
 
   data() {
     return {
-      eventDetailId: useRoute().query.eventDetailId,
+      eventDetailId: Number(useRoute().query.eventDetailId),
       mainEventName: '',
       tickets: [
         {
@@ -76,18 +76,18 @@ export default {
       })
     },
 
-    sendGetMainEventNameRequest() {
-      this.$http.get("/event/main", {
-            params: {
-              mainEventId: this.mainEventId
-            }
-          }
-      ).then(response => {
-        this.mainEventName = response.data.title
-      }).catch(() => {
-        router.push({name: 'errorRoute'})
-      })
-    },
+    // sendGetMainEventNameRequest() {
+    //   this.$http.get("/event/main", {
+    //         params: {
+    //           mainEventId: this.mainEventId
+    //         }
+    //       }
+    //   ).then(response => {
+    //     this.mainEventName = response.data.title
+    //   }).catch(() => {
+    //     router.push({name: 'errorRoute'})
+    //   })
+    // },
 
     openTicketModal() {
       this.$refs.ticketModalRef.handleOpenTicketModal()
@@ -99,7 +99,7 @@ export default {
   },
   beforeMount() {
     this.sendGetEventTicketsRequest()
-    this.sendGetMainEventNameRequest()
+    // this.sendGetMainEventNameRequest()
   },
 }
 </script>
