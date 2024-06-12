@@ -1,21 +1,36 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>{{ isAdd ? "Lisa pileti kogus" : "Muuda pileti kogust" }}</h3>
+      <h3>{{ isAdd ? "Lisa pileti kogus" : "Muuda piletite kogust" }}</h3>
     </template>
 
     <template #body>
       <div class="row">
         <div class="container text-center">
+
           <div class="mb-3">
-            <label class="form-label">Vali piletitüüp</label>
-            <TicketTypeDropdown v-model="eventTicketRequest.ticketTypeId" ref="ticketTypeDropdownRef"
-                                @event-selected-ticket-type-change="setSelectedTicketTypeId"/>
+            <label for="ticket-type" class="form-label">Piletitüüp</label>
+            <input v-model="eventTicketInfo.ticketTypeName" type="text" class="form-control">
           </div>
           <div class="mb-3">
-            <label for="" class="form-label">Kogu piletite arv</label>
-            <input v-model="eventTicketRequest.total" type="number" class="form-control" id="">
+            <label for="ticket-price" class="form-label">Piletite arv</label>
+            <input v-model="eventTicketInfo.total" type="number" class="form-control">
           </div>
+          <div class="mb-3">
+            <label for="ticket-price" class="form-label">Saadaval piletid</label>
+            <input v-model="eventTicketInfo.available" type="number" class="form-control">
+          </div>
+
+          <!--          <div class="mb-3">-->
+          <!--            <label class="form-label">Vali piletitüüp</label>-->
+          <!--            -->
+          <!--            <TicketTypeDropdown v-model="eventTicketRequest.ticketTypeId" ref="ticketTypeDropdownRef"-->
+          <!--                                @event-selected-ticket-type-change="setSelectedTicketTypeId"/>-->
+          <!--          </div>-->
+          <!--          <div class="mb-3">-->
+          <!--            <label for="" class="form-label">Kogu piletite arv</label>-->
+          <!--            <input v-model="eventTicketRequest.total" type="number" class="form-control" id="">-->
+          <!--          </div>-->
         </div>
       </div>
     </template>
@@ -35,12 +50,12 @@
 <script>
 import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
-import TicketTypeDropdown from "@/components/dropdown/TicketTypeDropdown.vue";
+// import TicketTypeDropdown from "@/components/dropdown/TicketTypeDropdown.vue";
 import {useRoute} from "vue-router";
 
 export default {
   name: "TicketModal",
-  components: {TicketTypeDropdown, Modal},
+  components: {Modal},
 
   data() {
     return {
@@ -56,6 +71,7 @@ export default {
       },
 
       eventTicketInfo: {
+        eventTicketId: 0,
         ticketTypeName: '',
         total: 0,
         available: 0,
@@ -88,15 +104,14 @@ export default {
       })
     },
 
-    sendGetTicketRequest() {
+    sendGetTicketRequest(eventTicketId) {
       this.$http.get("/ticket", {
             params: {
-              eventTicketId: this.eventTicketId
+              eventTicketId: eventTicketId
             }
           }
       ).then(response => {
         this.eventTicketInfo = response.data
-        this.$refs.modalRef.openModal()
       }).catch(() => {
         router.push({name: 'errorRoute'})
       })
@@ -111,7 +126,8 @@ export default {
     handleOpenTicketModalAsEdit(eventTicketId) {
       this.isAdd = false
       this.eventTicketId = eventTicketId
-      this.sendGetTicketRequest()
+      this.sendGetTicketRequest(eventTicketId)
+      this.$refs.modalRef.openModal()
     },
 
     closeTicketModal() {

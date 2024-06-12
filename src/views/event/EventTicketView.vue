@@ -56,7 +56,8 @@ export default {
           eventTicketId: 0,
           ticketTypeName: '',
           total: 0,
-          available: 0
+          available: 0,
+          status: ''
         }
       ]
     }
