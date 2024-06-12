@@ -18,7 +18,7 @@
             <td>{{ ticketInfo.total }}</td>
             <td>{{ ticketInfo.available }}</td>
             <td>
-              <font-awesome-icon @click="openTicketEditModal(tickets.eventTicketId)" class="cursor-pointer"
+              <font-awesome-icon @click="openTicketEditModal(ticketInfo.eventTicketId)" class="cursor-pointer"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
           </tr>

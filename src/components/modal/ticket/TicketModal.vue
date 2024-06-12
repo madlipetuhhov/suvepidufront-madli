@@ -9,12 +9,12 @@
         <div class="container text-center">
           <div class="mb-3">
             <label class="form-label">Vali piletitüüp</label>
-            <TicketTypeDropdown ref="ticketTypeDropdownRef"
+            <TicketTypeDropdown v-model="eventTicketRequest.ticketTypeId" ref="ticketTypeDropdownRef"
                                 @event-selected-ticket-type-change="setSelectedTicketTypeId"/>
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Kogu piletite arv</label>
-            <input v-model="eventTicketInfo.total" type="number" class="form-control" id="">
+            <input v-model="eventTicketRequest.total" type="number" class="form-control" id="">
           </div>
         </div>
       </div>
@@ -49,16 +49,23 @@ export default {
       selectedTicketTypeId: 0,
       eventTicketId: 0,
 
-      eventTicketInfo: {
+      eventTicketRequest: {
         eventDetailId: 0,
         ticketTypeId: 0,
         total: 0
+      },
+
+      eventTicketInfo: {
+        ticketTypeName: '',
+        total: 0,
+        available: 0,
+        status: ''
       }
     }
   },
   methods: {
     sendAddTicketsRequest() {
-      this.$http.post("/ticket", this.eventTicketInfo, {
+      this.$http.post("/ticket", this.eventTicketRequest, {
             params: {
               eventDetailId: this.eventDetailId
             }
@@ -72,8 +79,8 @@ export default {
     },
 
     sendPutTicketsRequest() {
-      this.$http.put("/tickets", this.eventTicketInfo
-      ).then(response => {
+      this.$http.put("/tickets", this.eventTicketRequest
+      ).then(() => {
         this.closeTicketModal()
         this.$emit('event-tickets-edited-or-added')
       }).catch(() => {
@@ -81,14 +88,15 @@ export default {
       })
     },
 
-    sendGetTicketRequest(eventTicketId) {
+    sendGetTicketRequest() {
       this.$http.get("/ticket", {
             params: {
-              eventTicketId: eventTicketId
+              eventTicketId: this.eventTicketId
             }
           }
       ).then(response => {
         this.eventTicketInfo = response.data
+        this.$refs.modalRef.openModal()
       }).catch(() => {
         router.push({name: 'errorRoute'})
       })
@@ -103,8 +111,7 @@ export default {
     handleOpenTicketModalAsEdit(eventTicketId) {
       this.isAdd = false
       this.eventTicketId = eventTicketId
-      this.sendGetTicketRequest(eventTicketId)
-      this.$refs.modalRef.openModal()
+      this.sendGetTicketRequest()
     },
 
     closeTicketModal() {
@@ -112,11 +119,11 @@ export default {
     },
 
     setSelectedTicketTypeId(selectedTicketTypeId) {
-      this.eventTicketInfo.ticketTypeId = selectedTicketTypeId
+      this.eventTicketRequest.ticketTypeId = selectedTicketTypeId
     },
 
     resetTicketModalData() {
-      this.eventTicketInfo = {}
+      this.eventTicketRequest = {}
     },
   }
 }
