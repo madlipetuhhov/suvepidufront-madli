@@ -16,10 +16,10 @@
             <label for="ticket-price" class="form-label">Piletite arv</label>
             <input v-model="eventTicketInfo.total" type="number" class="form-control">
           </div>
-          <div class="mb-3">
-            <label for="ticket-price" class="form-label">Saadaval piletid</label>
-            <input v-model="eventTicketInfo.available" type="number" class="form-control">
-          </div>
+<!--          <div class="mb-3">-->
+<!--            <label for="ticket-price" class="form-label">Saadaval piletid</label>-->
+<!--            <input v-model="eventTicketInfo.available" type="number" class="form-control">-->
+<!--          </div>-->
 
           <!--          <div class="mb-3">-->
           <!--            <label class="form-label">Vali piletitüüp</label>-->
@@ -81,11 +81,7 @@ export default {
   },
   methods: {
     sendAddTicketsRequest() {
-      this.$http.post("/ticket", this.eventTicketRequest, {
-            params: {
-              eventDetailId: this.eventDetailId
-            }
-          }
+      this.$http.post("/ticket", this.eventTicketRequest
       ).then(() => {
         this.closeTicketModal()
         this.$emit('event-tickets-edited-or-added')
@@ -95,7 +91,7 @@ export default {
     },
 
     sendPutTicketsRequest() {
-      this.$http.put("/tickets", this.eventTicketRequest
+      this.$http.put("/ticket", this.eventTicketInfo
       ).then(() => {
         this.closeTicketModal()
         this.$emit('event-tickets-edited-or-added')

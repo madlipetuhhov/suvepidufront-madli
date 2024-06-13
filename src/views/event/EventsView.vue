@@ -1,20 +1,22 @@
 <template>
   <div class="container text-center">
     <div>
-      <AlertDanger :message="errorMessage"/>
-      <AlertSuccess :message="successMessage"/>
-      <DeleteMainEventModal ref="deleteMainEventModal" @event-main-event-removed="handleMainEventRemovedEvent"/>
+
+      <div>
+        <AlertDanger :message="errorMessage"/>
+        <AlertSuccess :message="successMessage"/>
+        <DeleteMainEventModal ref="deleteMainEventModal" @event-main-event-removed="handleMainEventRemovedEvent"/>
+      </div>
+
       <h1>Minu sündmused - lisa ja muuda</h1>
+
       <div class="dropdown-add">
         <div class="input-group business-dropdown">
           <BusinessDropdown v-model="selectedBusinessId" @event-selected-business-change="setSelectedBusinessId"
                             @event-no-businesses-found="handleNoBusinessesFoundEvent"/>
         </div>
-        <!--        <div class="add-event">-->
-        <!--          <p>Lisa sündmus:</p>-->
-        <!--          <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>-->
-        <!--        </div>-->
       </div>
+
     </div>
 
     <div class="event-cards">
@@ -161,7 +163,7 @@ export default {
     },
 
     openDeleteMainEventModal(mainEventId) {
-      this.$refs.deleteMainEventModal.mainEventId = mainEventId;
+      this.$refs.deleteMainEventModal.mainEventId = mainEventId
       this.$refs.deleteMainEventModal.$refs.modalRef.openModal()
     },
 

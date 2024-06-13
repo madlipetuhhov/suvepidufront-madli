@@ -1,6 +1,14 @@
 <template>
   <div class="container text-center">
+
+    <div>
+      <AlertSuccess :message="successMessage"/>
+      <TicketModal ref="ticketModalRef" @event-tickets-edited-or-added="sendGetEventTicketsRequest"/>
+      <DeleteTicketModal ref="deleteTicketModalRef" @event-tickets-removed="handleTicketsRemovedEvent"/>
+    </div>
+
     <h1>{{ mainEventName }}</h1>
+
     <div class="row justify-content-center">
       <div class="col-8">
         <table class="table">
@@ -10,6 +18,7 @@
             <th scope="col">Piletite kogus</th>
             <th scope="col">Saadaval piletid</th>
             <th scope="col">Muuda</th>
+            <th scope="col">Kustuta</th>
           </tr>
           </thead>
           <tbody>
@@ -20,6 +29,11 @@
             <td>
               <font-awesome-icon @click="openTicketEditModal(ticketInfo.eventTicketId)" class="cursor-pointer"
                                  :icon="['far', 'pen-to-square']"/>
+            </td>
+            <td>
+              <font-awesome-icon @click="openDeleteTicketModal(ticketInfo.eventTicketId)"
+                                 class="cursor-pointer icon-delete"
+                                 :icon="['far', 'trash-can']"/>
             </td>
           </tr>
           </tbody>
@@ -32,25 +46,23 @@
       </div>
     </div>
   </div>
-
-  <div>
-    <TicketModal ref="ticketModalRef" @event-tickets-edited-or-added="sendGetEventTicketsRequest"/>
-  </div>
-
 </template>
 <script>
 import router from "@/router";
 import TicketModal from "@/components/modal/ticket/TicketModal.vue";
 import {useRoute} from "vue-router";
+import DeleteTicketModal from "@/components/modal/ticket/DeleteTicketModal.vue";
+import AlertSuccess from "@/components/alert/AlertSuccess.vue";
 
 export default {
   name: "EventTicketView",
-  components: {TicketModal},
+  components: {AlertSuccess, DeleteTicketModal, TicketModal},
 
   data() {
     return {
       eventDetailId: Number(useRoute().query.eventDetailId),
       mainEventName: '',
+      successMessage: '',
       tickets: [
         {
           eventTicketId: 0,
@@ -95,6 +107,22 @@ export default {
     openTicketEditModal(eventTicketId) {
       this.$refs.ticketModalRef.handleOpenTicketModalAsEdit(eventTicketId)
     },
+
+    openDeleteTicketModal(eventTicketId) {
+      this.$refs.deleteTicketModalRef.eventTicketId = eventTicketId
+      this.$refs.deleteTicketModalRef.$refs.modalRef.openModal()
+    },
+
+    handleTicketsRemovedEvent() {
+      this.successMessage = 'Piletid on edukalt kustutatud.'
+      setTimeout(this.resetSuccessMessage, 4000)
+      this.sendGetEventTicketsRequest()
+    },
+
+    resetSuccessMessage() {
+      this.successMessage = ''
+    },
+
   },
   beforeMount() {
     this.sendGetEventTicketsRequest()
