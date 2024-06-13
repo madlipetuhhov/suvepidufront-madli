@@ -5,9 +5,10 @@
     </template>
 
     <template #body>
-      <div class="row">
+      <!--          isAdd = true - drop ja pileti kogus-->
+      <!--          isAdd = false - dropist kuvab seda pileti tüüpi mis valisid, kogus, alles-->
+      <div v-if="isAdd" class="row">
         <div class="container text-center">
-
           <div class="mb-3">
             <label for="ticket-type" class="form-label">Piletitüüp</label>
             <input v-model="eventTicketInfo.ticketTypeName" type="text" class="form-control">
@@ -16,23 +17,38 @@
             <label for="ticket-price" class="form-label">Piletite arv</label>
             <input v-model="eventTicketInfo.total" type="number" class="form-control">
           </div>
-<!--          <div class="mb-3">-->
-<!--            <label for="ticket-price" class="form-label">Saadaval piletid</label>-->
-<!--            <input v-model="eventTicketInfo.available" type="number" class="form-control">-->
-<!--          </div>-->
-
-          <!--          <div class="mb-3">-->
-          <!--            <label class="form-label">Vali piletitüüp</label>-->
-          <!--            -->
-          <!--            <TicketTypeDropdown v-model="eventTicketRequest.ticketTypeId" ref="ticketTypeDropdownRef"-->
-          <!--                                @event-selected-ticket-type-change="setSelectedTicketTypeId"/>-->
-          <!--          </div>-->
-          <!--          <div class="mb-3">-->
-          <!--            <label for="" class="form-label">Kogu piletite arv</label>-->
-          <!--            <input v-model="eventTicketRequest.total" type="number" class="form-control" id="">-->
-          <!--          </div>-->
         </div>
       </div>
+
+      <div v-if="isEdit" class="row">
+        <div class="container text-center">
+          <div class="mb-3">
+            <label for="ticket-type" class="form-label">Siia dropdown! - muuda piletit vaade</label>
+            <input v-model="eventTicketInfo.ticketTypeName" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="ticket-price" class="form-label">Piletite arv</label>
+            <input v-model="eventTicketInfo.total" type="number" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="ticket-price" class="form-label">Saadaval piletid</label>
+            <input v-model="eventTicketInfo.available" type="number" class="form-control">
+          </div>
+        </div>
+      </div>
+
+<!--                <div class="mb-3">-->
+<!--                  <label class="form-label">Vali piletitüüp</label>-->
+<!--                  -->
+<!--                  <TicketTypeDropdown v-model="eventTicketRequest.ticketTypeId" ref="ticketTypeDropdownRef"-->
+<!--                                      @event-selected-ticket-type-change="setSelectedTicketTypeId"/>-->
+<!--                </div>-->
+<!--                <div class="mb-3">-->
+<!--                  <label for="" class="form-label">Kogu piletite arv</label>-->
+<!--                  <input v-model="eventTicketRequest.total" type="number" class="form-control" id="">-->
+<!--                </div>-->
+
+
     </template>
 
     <template #buttons>
@@ -60,6 +76,7 @@ export default {
   data() {
     return {
       isAdd: true,
+      isEdit: false,
       eventDetailId: Number(useRoute().query.eventDetailId),
       selectedTicketTypeId: 0,
       eventTicketId: 0,
@@ -115,12 +132,14 @@ export default {
 
     handleOpenTicketModal() {
       this.isAdd = true
+      this.isEdit = false
       this.resetTicketModalData()
       this.$refs.modalRef.openModal()
     },
 
     handleOpenTicketModalAsEdit(eventTicketId) {
       this.isAdd = false
+      this.isEdit = true
       this.eventTicketId = eventTicketId
       this.sendGetTicketRequest(eventTicketId)
       this.$refs.modalRef.openModal()
@@ -135,7 +154,7 @@ export default {
     },
 
     resetTicketModalData() {
-      this.eventTicketRequest = {}
+      this.eventTicketInfo = {}
     },
   }
 }
