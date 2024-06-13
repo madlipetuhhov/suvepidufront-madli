@@ -1,14 +1,14 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Kustutamine</h3>
+      <h3>Sündmuse toimumiskoha kustutamine</h3>
     </template>
     <template #body>
-      <p>Kas sa oled kindel, et soovid lisainfo kustutada?</p>
+      <p>Kas sa oled kindel, et soovid sündmuse toimumiskoha kustutada?</p>
     </template>
     <template #buttons>
       <button @click="sendDeleteEventDetailRequest" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
+              class="button-danger btn btn-primary text-center text-nowrap">
         Jah
       </button>
       <button @click="closeDeleteEventDetailModal" type="submit"

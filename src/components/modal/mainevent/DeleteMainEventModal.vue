@@ -4,15 +4,15 @@
       <h3>Sündmuse kustutamine</h3>
     </template>
     <template #body>
-      <p>Kas sa oled kindel, et soovid sündmust kustutada?</p>
+      <p>Kas sa oled kindel, et soovid sündmuse kustutada?</p>
     </template>
     <template #buttons>
       <button @click="sendDeleteMainEventRequest" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
+              class="button-danger btn btn-primary text-center text-nowrap">
         Jah
       </button>
       <button @click="closeDeleteMainEventModal" type="submit"
-              class="button-danger btn btn-primary text-center text-nowrap">Loobu
+              class="button-neutral btn btn-primary text-center text-nowrap">Loobu
       </button>
     </template>
   </Modal>

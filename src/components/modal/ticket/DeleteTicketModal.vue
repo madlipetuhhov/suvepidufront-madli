@@ -4,15 +4,15 @@
       <h3>Piletite kustutamine</h3>
     </template>
     <template #body>
-      <p>Kas sa oled kindel, et kustutada sündmuse piletid?</p>
+      <p>Kas sa oled kindel, et soovid kustutada sündmuse piletid?</p>
     </template>
     <template #buttons>
       <button @click="sendDeleteTicketRequest" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
+              class="button-danger btn btn-primary text-center text-nowrap">
         Jah
       </button>
       <button @click="closeDeleteTicketModal" type="submit"
-              class="button-danger btn btn-primary text-center text-nowrap">Loobu
+              class="button-neutral btn btn-primary text-center text-nowrap">Loobu
       </button>
     </template>
   </Modal>
