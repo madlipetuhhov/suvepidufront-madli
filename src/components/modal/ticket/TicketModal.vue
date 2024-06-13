@@ -5,8 +5,7 @@
     </template>
 
     <template #body>
-      <!--          isAdd = true - drop ja pileti kogus-->
-      <!--          isAdd = false - dropist kuvab seda pileti tüüpi mis valisid, kogus, alles-->
+
       <div v-if="isAdd" class="row">
         <div class="container text-center">
           <div class="mb-3">
@@ -37,17 +36,16 @@
         </div>
       </div>
 
-<!--                <div class="mb-3">-->
-<!--                  <label class="form-label">Vali piletitüüp</label>-->
-<!--                  -->
-<!--                  <TicketTypeDropdown v-model="eventTicketRequest.ticketTypeId" ref="ticketTypeDropdownRef"-->
-<!--                                      @event-selected-ticket-type-change="setSelectedTicketTypeId"/>-->
-<!--                </div>-->
-<!--                <div class="mb-3">-->
-<!--                  <label for="" class="form-label">Kogu piletite arv</label>-->
-<!--                  <input v-model="eventTicketRequest.total" type="number" class="form-control" id="">-->
-<!--                </div>-->
-
+      <!--                <div class="mb-3">-->
+      <!--                  <label class="form-label">Vali piletitüüp</label>-->
+      <!--                  -->
+      <!--                  <TicketTypeDropdown v-model="eventTicketRequest.ticketTypeId" ref="ticketTypeDropdownRef"-->
+      <!--                                      @event-selected-ticket-type-change="setSelectedTicketTypeId"/>-->
+      <!--                </div>-->
+      <!--                <div class="mb-3">-->
+      <!--                  <label for="" class="form-label">Kogu piletite arv</label>-->
+      <!--                  <input v-model="eventTicketRequest.total" type="number" class="form-control" id="">-->
+      <!--                </div>-->
 
     </template>
 
