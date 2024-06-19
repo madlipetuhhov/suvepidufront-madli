@@ -22,16 +22,16 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="ticketInfo in tickets" :key="ticketInfo.eventTicketId">
-            <td>{{ ticketInfo.ticketTypeName }}</td>
-            <td>{{ ticketInfo.total }}</td>
-            <td>{{ ticketInfo.available }}</td>
+          <tr v-for="tickets in eventTicketInfo" :key="tickets.eventTicketId">
+            <td>{{ tickets.ticketTypeName }}</td>
+            <td>{{ tickets.total }}</td>
+            <td>{{ tickets.available }}</td>
             <td>
-              <font-awesome-icon @click="openTicketEditModal(ticketInfo.eventTicketId)" class="cursor-pointer"
+              <font-awesome-icon @click="openTicketEditModal(tickets.eventTicketId)" class="cursor-pointer"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
             <td>
-              <font-awesome-icon @click="openDeleteTicketModal(ticketInfo.eventTicketId)"
+              <font-awesome-icon @click="openDeleteTicketModal(tickets.eventTicketId)"
                                  class="cursor-pointer icon-delete"
                                  :icon="['far', 'trash-can']"/>
             </td>
@@ -63,7 +63,8 @@ export default {
       eventDetailId: Number(useRoute().query.eventDetailId),
       mainEventName: '',
       successMessage: '',
-      tickets: [
+
+      eventTicketInfo: [
         {
           eventTicketId: 0,
           ticketTypeName: '',
@@ -81,7 +82,7 @@ export default {
           eventDetailId: this.eventDetailId
         }
       }).then(response => {
-        this.tickets = response.data
+        this.eventTicketInfo = response.data
       }).catch(() => {
         router.push({name: 'errorRoute'})
       })
