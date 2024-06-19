@@ -32,15 +32,15 @@
               </button>
             </li>
             <li>
-              <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"
-                      class="button-event-card btn btn-primary">
-                Toimumiskohad & piletid
-              </button>
-            </li>
-            <li>
               <button @click="navigateToTicketTypes(mainEventInfo.mainEventId)" type="button"
                       class="button-event-card btn btn-primary">
                 Piletitüübid
+              </button>
+            </li>
+            <li>
+              <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"
+                      class="button-event-card btn btn-primary">
+                Toimumiskohad & piletid
               </button>
             </li>
           </ul>
