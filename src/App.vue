@@ -1,9 +1,10 @@
 <template>
   <LoginModal ref="loginModalRef" @event-update-nav-menu="updateNavMenu"/>
   <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
-  <div class="logo mt-3">
-    <img src="../src/assets/images/logo.png" alt="company logo" height="200"/>
-  </div>
+  <header class="header">
+  <router-link to="/">
+    <img src="../src/assets/images/logo.png" alt="company logo"/>
+  </router-link>
   <nav>
     <router-link to="/">AVALEHT</router-link>
     |
@@ -20,6 +21,7 @@
     </template>
 
   </nav>
+  </header>
   <router-view/>
 </template>
 

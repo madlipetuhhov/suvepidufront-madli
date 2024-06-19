@@ -35,18 +35,14 @@ p {
     margin-bottom: 0;
 }
 
-/* NAVIGATION MENU */
+/* NAVIGATION MENU / HEADER */
 #app {
     text-align: center;
 }
 
 a {
     text-decoration: none;
-}
-
-nav {
-    padding: 30px;
-    margin-bottom: 24px;
+    display: inline-block;
 }
 
 nav a {
@@ -58,6 +54,18 @@ nav a {
 nav a:hover {
     color: #6A704C;
     text-decoration: underline;
+}
+
+.header{
+    display: flex;
+    padding: 25px 50px 50px 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header img{
+    width: 150px;
+    height: auto;
 }
 
 /* ICONS */
