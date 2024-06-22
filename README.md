@@ -4,11 +4,8 @@ This project consists of a backend service built with Java and PostgreSQL, and a
 # Project Status and Contact
 **Please note that this project is actively under development, with ongoing improvements and updates being made on a weekly basis.**
 As such, you may encounter features that are still in progress or incomplete.
-Your feedback and contributions are highly appreciated as we work towards enhancing and completing the project.
 
 If you want to contact me, you can reach me at **madli.petuhhov89@gmail.com**.
-
-Thank you for your understanding and support as I continue to develop and refine the Suvepidu project.
 
 ## Repositories
 [Backend Repository](https://github.com/madlipetuhhov/suvepiduback-madli)

@@ -81,16 +81,6 @@ export default {
         available: 0,
         status: ''
       },
-
-      // eventTicketInfoPut: {
-      //   // eventTicketId: 0,
-      //   ticketTypeName: '',
-      //   total: 0,
-      //   available: 0,
-      //   // status: ''
-      // }
-
-
     }
   },
   methods: {
