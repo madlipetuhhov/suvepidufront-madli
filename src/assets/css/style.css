@@ -156,6 +156,10 @@ p {
     gap: 24px;
 }
 
+.login-form-control {
+width: 250px;
+}
+
 /* EVENT DETAIL MODAL */
 .time-picker {
     width: 150px;
