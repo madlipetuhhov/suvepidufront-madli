@@ -1,26 +1,34 @@
 <template>
   <LoginModal ref="loginModalRef" @event-update-nav-menu="updateNavMenu"/>
   <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
-  <header class="header">
-  <router-link to="/">
-    <img src="../src/assets/images/logo.png" alt="company logo"/>
-  </router-link>
-  <nav>
-    <router-link to="/">AVALEHT</router-link>
-    |
-    <template v-if="isLoggedIn">
-      <template v-if="isAdmin">
-        <router-link to="/events">MINU SÜNDMUSED</router-link>
-        |
+
+  <header>
+
+    <nav class="container">
+      <router-link to="/">
+        <img src="../src/assets/images/logo.png" alt="company logo"/>
+      </router-link>
+
+      <!--      <router-link to="/">AVALEHT</router-link>-->
+
+      <template v-if="isLoggedIn">
+        <template v-if="isAdmin">
+          <router-link to="/events">MINU SÜNDMUSED</router-link>
+
+        </template>
+        <a href="#" @click="openLogOutModal">LOGI VÄLJA</a>
       </template>
-      <a href="#" @click="openLogOutModal">LOGI VÄLJA</a>
-    </template>
 
-    <template v-else>
-      <a href="#" @click="openLoginModal">LOGI SISSE</a>
-    </template>
+      <template v-else>
+        <a href="#" @click="openLoginModal">LOGI SISSE</a>
+      </template>
+    </nav>
 
-  </nav>
+    <div class="hero-container">
+      <h2>Hea pidu hea ilmaga!</h2>
+      <p>Kõik piletid Eesti suvesündmustele ühest kohast - vali, osta, pidutse!</p>
+    </div>
+
   </header>
   <router-view/>
 </template>
