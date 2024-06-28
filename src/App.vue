@@ -107,13 +107,17 @@ export default {
 
 .global-nav a {
   text-decoration: none;
-  color: #e1e2db;
+  color: #40432e;
   font-weight: bold;
   font-size: 24px;
 }
 
 .global-nav a:hover {
   color: #6A704C;
+}
+
+router-view {
+  padding-top: 80px; /* Adjust to match the height of global-nav */
 }
 </style>
 

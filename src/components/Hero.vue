@@ -18,8 +18,9 @@ header {
   position: relative;
   height: 100vh;
   background-image: linear-gradient(
-      rgba(34, 34, 34, 0.4),
-      rgba(34, 34, 34, 0.4)
+      to bottom,
+      rgba(34, 34, 34, 0.2), /* Lighter color at the top */
+      rgba(34, 34, 34, 0.4) /* Darker color towards the bottom */
   ), url(../assets/images/hero-aranxa-esteve-unsplash.jpg);
   background-size: cover;
   background-position: center;

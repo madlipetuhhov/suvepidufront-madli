@@ -43,6 +43,10 @@ p {
     width: 1200px;
 }
 
+.page-content{
+    padding-top: 200px;
+}
+
 /* ICONS */
 .icon {
     color: #6A704C;
