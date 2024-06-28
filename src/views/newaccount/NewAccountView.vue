@@ -26,17 +26,15 @@
       </div>
     </div>
 
-    <div class="row mt-3">
-      <div class="col">
-        <button @click="addNewUser" type="submit" class="button-success btn btn-primary text-center text-nowrap">
-          OK
-        </button>
-        <button @click="navigateToHomeView" type="submit" class="button-danger btn btn-primary text-center text-nowrap">
-          Loobu
-        </button>
-      </div>
-    </div>
+    <div class="buttons-row">
+      <button @click="addNewUser" type="submit" class="button-success btn btn-primary text-center text-nowrap">
+        OK
+      </button>
 
+      <button @click="navigateToHomeView" type="submit" class="button-danger btn btn-primary text-center text-nowrap">
+        Loobu
+      </button>
+    </div>
   </div>
 
 </template>

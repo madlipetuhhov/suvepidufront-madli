@@ -28,6 +28,7 @@
         <EventImage :image-data="mainEventInfo.imageData"/>
       </div>
 
+      <div class="buttons-row">
       <button @click="addOrUpdateMainEvent" type="submit"
               class="button-success btn btn-primary text-center text-nowrap">
         OK
@@ -35,7 +36,7 @@
       <button @click="navigateToEventsView" type="submit" class="button-danger btn btn-primary text-center text-nowrap">
         Loobu
       </button>
-
+      </div>
     </div>
   </div>
 
