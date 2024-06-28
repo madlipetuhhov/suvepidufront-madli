@@ -2,8 +2,8 @@
   <LoginModal ref="loginModalRef" @event-update-nav-menu="updateNavMenu"/>
   <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
 
-    <nav class="global-nav">
-      <div class="container">
+  <nav ref="navbar" class="global-nav">
+    <div class="container">
       <div class="left">
         <router-link to="/">
           <img src="../src/assets/images/logo.png" alt="company logo"/>
@@ -22,8 +22,8 @@
           <a href="#" @click="openLoginModal">LOGI SISSE</a>
         </template>
       </div>
-      </div>
-    </nav>
+    </div>
+  </nav>
 
   <router-view/>
 </template>
@@ -40,10 +40,22 @@ export default {
   data() {
     return {
       isLoggedIn: false,
-      isAdmin: false
+      isAdmin: false,
+      lastScrollY: 0,
     }
   },
   methods: {
+    handleScroll() {
+      const currentScrollY = window.scrollY;
+      const navbar = this.$refs.navbar;
+
+      if (currentScrollY > this.lastScrollY) {
+        navbar.style.top = '-220px'; // Adjust based on your nav height
+      } else {
+        navbar.style.top = '0';
+      }
+      this.lastScrollY = currentScrollY;
+    },
 
     updateNavMenu() {
       this.updateIsLoggedInValue()
@@ -69,18 +81,25 @@ export default {
     openLogOutModal() {
       this.$refs.logOutModalRef.$refs.modalRef.openModal()
     },
-
   },
+
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 }
 </script>
 
 <style>
-.global-nav {
+nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000; /* Ensure nav is above other content */
+  transition: top 0.3s;
 }
 
 .global-nav .container {
@@ -91,7 +110,7 @@ export default {
 }
 
 .global-nav .container img {
- width: 150px;
+  width: 150px;
 }
 
 .global-nav .container .left {
@@ -109,7 +128,7 @@ export default {
   text-decoration: none;
   color: #40432e;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .global-nav a:hover {
