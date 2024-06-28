@@ -1,5 +1,5 @@
 <template>
-  <Modal ref="modalRef">
+  <OutModal ref="modalRef">
     <template #title>
       Soovid välja logida?
     </template>
@@ -7,17 +7,17 @@
       <button @click="executeLogOut" type="submit" class="button-danger btn btn-primary text-center text-nowrap">Logi välja</button>
       <button @click="closeLogOutModal" type="submit" class="button-neutral btn btn-primary text-center text-nowrap">Loobu</button>
     </template>
-  </Modal>
+  </OutModal>
 </template>
 
 <script>
-import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
+import OutModal from "@/components/modal/OutModal.vue";
 
 
 export default {
   name: 'LogOutModal',
-  components: {Modal},
+  components: {OutModal},
     methods: {
       executeLogOut(){
         sessionStorage.clear()
