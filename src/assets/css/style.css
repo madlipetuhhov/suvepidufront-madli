@@ -1,3 +1,4 @@
+/* GENERAL */
 /*
 SPACING SYSTEM (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
@@ -40,89 +41,6 @@ p {
 .container {
     margin: 0 auto;
     width: 1200px;
-}
-
-/* NAVIGATION MENU */
-a {
-    text-decoration: none;
-    color: #e1e2db;
-}
-
-nav {
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 32px;
-}
-
-nav a:hover {
-    color: #6A704C;
-}
-
-/* HERO */
-header {
-    position: relative;
-    height: 100vh;
-    background-image: linear-gradient(
-            rgba(34, 34, 34, 0.4),
-            rgba(34, 34, 34, 0.4)
-    ), url(../images/hero-aranxa-esteve-unsplash.jpg);
-    background-size: cover;
-}
-
-header img {
-    width: 150px;
-    height: auto;
-}
-
-.hero-container {
-    width: 1200px;
-    position: absolute;
-    text-align: center;
-    padding: 0 15px;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.hero-container h2 {
-    color: #e1e2db;
-    font-size: 52px;
-    margin-bottom: 32px;
-    line-height: 1.05;
-}
-
-.hero-container p {
-    color: #e1e2db;
-    font-size: 24px;
-    line-height: 1.6;
-}
-
-/* Responsive Adjustments hero-container*/
-@media (max-width: 1200px) {
-    .hero-container {
-        width: 80%;
-    }
-}
-
-@media (max-width: 992px) {
-    .hero-container {
-        width: 70%;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-container {
-        width: 80%;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-container {
-        width: 90%;
-    }
 }
 
 /* ICONS */

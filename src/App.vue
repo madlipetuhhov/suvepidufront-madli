@@ -2,34 +2,29 @@
   <LoginModal ref="loginModalRef" @event-update-nav-menu="updateNavMenu"/>
   <LogOutModal ref="logOutModalRef" @event-update-nav-menu="updateNavMenu"/>
 
-  <header>
+    <nav class="global-nav">
+      <div class="container">
+      <div class="left">
+        <router-link to="/">
+          <img src="../src/assets/images/logo.png" alt="company logo"/>
+        </router-link>
+      </div>
 
-    <nav class="container">
-      <router-link to="/">
-        <img src="../src/assets/images/logo.png" alt="company logo"/>
-      </router-link>
-
-      <!--      <router-link to="/">AVALEHT</router-link>-->
-
-      <template v-if="isLoggedIn">
-        <template v-if="isAdmin">
-          <router-link to="/events">MINU SÜNDMUSED</router-link>
-
+      <div class="right">
+        <template v-if="isLoggedIn">
+          <template v-if="isAdmin">
+            <router-link to="/events">MINU SÜNDMUSED</router-link>
+          </template>
+          <a href="#" @click="openLogOutModal">LOGI VÄLJA</a>
         </template>
-        <a href="#" @click="openLogOutModal">LOGI VÄLJA</a>
-      </template>
 
-      <template v-else>
-        <a href="#" @click="openLoginModal">LOGI SISSE</a>
-      </template>
+        <template v-else>
+          <a href="#" @click="openLoginModal">LOGI SISSE</a>
+        </template>
+      </div>
+      </div>
     </nav>
 
-    <div class="hero-container">
-      <h2>Hea pidu hea ilmaga!</h2>
-      <p>Kõik piletid Eesti suvesündmustele ühest kohast - vali, osta, pidutse!</p>
-    </div>
-
-  </header>
   <router-view/>
 </template>
 
@@ -37,10 +32,11 @@
 
 import LoginModal from "@/components/modal/login/LoginModal.vue";
 import LogOutModal from "@/components/modal/login/LogOutModal.vue";
+import Hero from "@/components/Hero.vue";
 
 export default {
   name: 'App',
-  components: {LogOutModal, LoginModal},
+  components: {Hero, LogOutModal, LoginModal},
   data() {
     return {
       isLoggedIn: false,
@@ -48,6 +44,7 @@ export default {
     }
   },
   methods: {
+
     updateNavMenu() {
       this.updateIsLoggedInValue()
       this.updateIsAdminValue()
@@ -78,5 +75,45 @@ export default {
 </script>
 
 <style>
+.global-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure nav is above other content */
+}
 
+.global-nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.global-nav .container img {
+ width: 150px;
+}
+
+.global-nav .container .left {
+  display: flex;
+  align-items: center;
+}
+
+.global-nav .container .right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.global-nav a {
+  text-decoration: none;
+  color: #e1e2db;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.global-nav a:hover {
+  color: #6A704C;
+}
 </style>
+
