@@ -50,7 +50,7 @@ export default {
       const navbar = this.$refs.navbar;
 
       if (currentScrollY > this.lastScrollY) {
-        navbar.style.top = '-220px'; // Adjust based on your nav height
+        navbar.style.top = '-220px';
       } else {
         navbar.style.top = '0';
       }
@@ -83,8 +83,13 @@ export default {
     },
   },
 
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+  created() {
+    this.$nextTick(() => {
+      const navbar = this.$refs.navbar;
+      if (navbar) {
+        window.addEventListener('scroll', this.handleScroll);
+      }
+    });
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
