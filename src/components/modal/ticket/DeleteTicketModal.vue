@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Piletite kustutamine</h3>
+      Piletite kustutamine
     </template>
     <template #body>
       <p>Kas sa oled kindel, et soovid kustutada sündmuse piletid?</p>
@@ -22,7 +22,6 @@
 <script>
 import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
-import {useRoute} from "vue-router";
 
 export default {
   name: 'DeleteTicketModal',

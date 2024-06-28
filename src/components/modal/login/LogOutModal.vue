@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Soovid välja logida?</h3>
+      Soovid välja logida?
     </template>
     <template #buttons>
       <button @click="executeLogOut" type="submit" class="button-danger btn btn-primary text-center text-nowrap">Logi välja</button>

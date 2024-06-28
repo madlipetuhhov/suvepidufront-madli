@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Sündmuse toimumiskoha kustutamine</h3>
+      Sündmuse toimumiskoha kustutamine
     </template>
     <template #body>
       <p>Kas sa oled kindel, et soovid sündmuse toimumiskoha kustutada?</p>

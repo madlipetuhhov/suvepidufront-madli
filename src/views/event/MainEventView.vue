@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center page-content">
     <div class="col col-5">
 
       <div v-if="this.mainEventId === undefined" class="input-group mb-3">

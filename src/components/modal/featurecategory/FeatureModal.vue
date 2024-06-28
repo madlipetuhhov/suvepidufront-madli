@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Lisa sündmusele võimalused</h3>
+      Lisa sündmusele võimalused
     </template>
     <template #body>
       <div class="row text-start mx-5">

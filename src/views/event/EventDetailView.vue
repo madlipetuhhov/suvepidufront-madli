@@ -3,7 +3,7 @@
     <EventDetailModal ref="eventDetailModalRef"/>
     <DeleteEventDetailModal @event-detail-deleted="eventEventDetailDeleted" ref="deleteEventDetailModalRef"/>
   </div>
-  <div class="container text-center">
+  <div class="container text-center page-content">
     <h2>{{ mainEventName }}</h2>
     <div class="row justify-content-center">
       <div class="col-10">

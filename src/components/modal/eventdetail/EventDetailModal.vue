@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>{{ isAdd ? "Lisa sündmuse asukoha info" : "Muuda sündmuse asukoha infot" }}</h3>
+      {{ isAdd ? "Lisa sündmuse asukoha info" : "Muuda sündmuse asukoha infot" }}
     </template>
     <template #body>
       <div class="mb-3">

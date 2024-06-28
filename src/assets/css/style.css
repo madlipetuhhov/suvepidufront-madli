@@ -43,8 +43,8 @@ p {
     width: 1200px;
 }
 
-.page-content{
-    padding-top: 200px;
+.page-content {
+    padding-top: 220px;
 }
 
 /* ICONS */
@@ -119,7 +119,29 @@ p {
     position: fixed; /* Positsiooni tüüp on fikseeritud */
     top: 10%; /* Ülemine paigutus on 10% */
     left: 50%; /* Vasak paigutus on 50% */
-    transform: translateX(-50%); /* Teisendab X-telje piki -50% võrra */
+    transform: translate(-50%, 0); /* Teisendab X-telje piki -50% võrra */
+    width: 80%; /* Set width to 80% of the viewport width */
+}
+
+.modal-content{
+    padding: 25px;
+}
+
+.modal-body .form-control{
+    width: 100%;
+}
+
+.modal-body .form-select{
+    width: 100%;
+}
+
+.modal-header{
+    flex-shrink: unset;
+    gap: 16px;
+}
+
+.modal-title{
+    margin: 0;
 }
 
 /* EVENT DETAIL MODAL */

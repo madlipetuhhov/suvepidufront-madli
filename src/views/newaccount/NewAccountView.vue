@@ -1,19 +1,19 @@
 <template>
   <h1>{{ successMessage }}</h1>
 
-  <div class="container text-center">
+  <div class="container text-center page-content">
 
     <div class="row justify-content-center">
-      <div class="col col-5">
+      <div class="col col-6">
         <div class="input-group mb-3">
-          <span class="input-group-text me-3">Vali konto tüüp</span>
+          <span class="input-group-text">Vali konto tüüp</span>
           <RoleDropdown @event-selected-role-change="setSelectedRoleId"/>
         </div>
       </div>
     </div>
 
     <div class="row justify-content-center mt-3">
-      <div class="col col-5">
+      <div class="col col-6">
 
         <div>
           <UserInfo ref="userInfoRef"/>

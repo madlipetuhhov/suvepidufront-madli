@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Logi sisse</h3>
+      Logi sisse
     </template>
     <template #body>
       <div class="container text-start">

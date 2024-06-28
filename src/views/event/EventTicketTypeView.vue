@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center">
+  <div class="container text-center page-content">
     <h1>{{ mainEventName }}</h1>
     <div class="row justify-content-center">
       <div class="col-8">

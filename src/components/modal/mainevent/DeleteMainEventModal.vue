@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>Sündmuse kustutamine</h3>
+      Sündmuse kustutamine
     </template>
     <template #body>
       <p>Kas sa oled kindel, et soovid sündmuse kustutada?</p>

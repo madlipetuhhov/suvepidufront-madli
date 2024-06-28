@@ -117,7 +117,7 @@ export default {
 }
 
 router-view {
-  padding-top: 80px; /* Adjust to match the height of global-nav */
+  padding-top: 80px;
 }
 </style>
 

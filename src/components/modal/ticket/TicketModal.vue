@@ -1,7 +1,7 @@
 <template>
   <Modal ref="modalRef">
     <template #title>
-      <h3>{{ isAdd ? "Lisa piletite kogus" : "Muuda piletite kogust" }}</h3>
+      {{ isAdd ? "Lisa piletite kogus" : "Muuda piletite kogust" }}
     </template>
 
     <template #body>

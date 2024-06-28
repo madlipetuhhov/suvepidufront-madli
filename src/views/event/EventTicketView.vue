@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center">
+  <div class="container text-center page-content">
 
     <div>
       <AlertSuccess :message="successMessage"/>
