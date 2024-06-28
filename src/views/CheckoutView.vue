@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container text-center page-content">
     <h1>ChekcoutView vaade</h1>
   </div>
 </template>
