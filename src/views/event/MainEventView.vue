@@ -13,7 +13,7 @@
 
       <div class="input-group mb-3">
         <div class="form-floating">
-            <textarea v-model="mainEventInfo.description" class="form-control" placeholder="Leave a comment here"
+            <textarea v-model="mainEventInfo.description" class="form-control"
                       id="floatingTextarea2"
                       style="height: 100px"></textarea>
           <label for="floatingTextarea2">Sündmuse kirjeldus</label>
@@ -29,13 +29,14 @@
       </div>
 
       <div class="buttons-row">
-      <button @click="addOrUpdateMainEvent" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
-        OK
-      </button>
-      <button @click="navigateToEventsView" type="submit" class="button-danger btn btn-primary text-center text-nowrap">
-        Loobu
-      </button>
+        <button @click="addOrUpdateMainEvent" type="submit"
+                class="button-success btn btn-primary text-center text-nowrap">
+          OK
+        </button>
+        <button @click="navigateToEventsView" type="submit"
+                class="button-danger btn btn-primary text-center text-nowrap">
+          Loobu
+        </button>
       </div>
     </div>
   </div>
@@ -48,7 +49,6 @@ import router from "@/router";
 import FeatureCategoryInfo from "@/views/event/FeatureCategoryView.vue";
 import {useRoute} from "vue-router";
 import EventImage from "@/components/image/EventImage.vue";
-
 
 
 export default {

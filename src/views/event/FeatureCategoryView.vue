@@ -24,20 +24,20 @@
           </tr>
           <tr>
             <td v-if="this.selectedCategories.length > 0">
-              <font-awesome-icon @click="openFeatureModal(mainEventId)" class="cursor-pointer"
+              <font-awesome-icon @click="openFeatureModal(mainEventId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
             <td v-if="this.selectedCategories.length > 0">
-              <font-awesome-icon @click="openCategoryModal(mainEventId)" class="cursor-pointer"
+              <font-awesome-icon @click="openCategoryModal(mainEventId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
           </tr>
           <tr>
             <td v-if="this.selectedCategories.length === 0">
-              <font-awesome-icon @click="openFeatureModal(mainEventId)" :icon="['fas', 'plus']"/>
+              <font-awesome-icon @click="openFeatureModal(mainEventId)" :icon="['fas', 'plus']" class="icon"/>
             </td>
             <td v-if="this.selectedCategories.length === 0">
-              <font-awesome-icon @click="openCategoryModal(mainEventId)" :icon="['fas', 'plus']"/>
+              <font-awesome-icon @click="openCategoryModal(mainEventId)" :icon="['fas', 'plus']" class="icon"/>
             </td>
           </tr>
           </tbody>

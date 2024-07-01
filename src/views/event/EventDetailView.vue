@@ -40,12 +40,12 @@
             </td>
 
             <td>
-              <font-awesome-icon @click="openEventDetailEditModal(eventDetail.eventDetailId)" class="cursor-pointer"
+              <font-awesome-icon @click="openEventDetailEditModal(eventDetail.eventDetailId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
 
             <td>
-              <font-awesome-icon @click="openDeleteEventDetailModal" class="cursor-pointer"
+              <font-awesome-icon @click="openDeleteEventDetailModal" class="icon-delete"
                                  :icon="['far', 'trash-can']"/>
             </td>
           </tr>
@@ -53,7 +53,7 @@
         </table>
 
         <div>
-          <font-awesome-icon @click="openEventDetailModal" :icon="['fas', 'plus']"/>
+          <font-awesome-icon @click="openEventDetailModal" :icon="['fas', 'plus']" class="icon"/>
         </div>
 
       </div>

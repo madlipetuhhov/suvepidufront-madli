@@ -17,7 +17,7 @@
             <th scope="col">Piletitüüp</th>
             <th scope="col">Piletite kogus</th>
             <th scope="col">Saadaval piletid</th>
-            <th scope="col">Muuda</th>
+            <th scope="col">Lisa & muuda</th>
             <th scope="col">Kustuta</th>
           </tr>
           </thead>
@@ -27,22 +27,18 @@
             <td>{{ tickets.total }}</td>
             <td>{{ tickets.available }}</td>
             <td>
-              <font-awesome-icon @click="openTicketEditModal(tickets.eventTicketId)" class="cursor-pointer"
+              <font-awesome-icon @click="openTicketEditModal(tickets.eventTicketId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
             <td>
-              <font-awesome-icon @click="openDeleteTicketModal(tickets.eventTicketId)"
-                                 class="cursor-pointer icon-delete"
+              <font-awesome-icon @click="openTicketDeleteModal(tickets.eventTicketId)"
+                                 class="icon-delete"
                                  :icon="['far', 'trash-can']"/>
             </td>
+
           </tr>
           </tbody>
         </table>
-
-        <div>
-          <font-awesome-icon @click="openTicketModal" :icon="['fas', 'plus']" class="cursor-pointer"/>
-        </div>
-
       </div>
     </div>
   </div>
@@ -101,15 +97,11 @@ export default {
       })
     },
 
-    openTicketModal() {
-      this.$refs.ticketModalRef.handleOpenTicketModal()
-    },
-
     openTicketEditModal(eventTicketId) {
       this.$refs.ticketModalRef.handleOpenTicketModalAsEdit(eventTicketId)
     },
 
-    openDeleteTicketModal(eventTicketId) {
+    openTicketDeleteModal(eventTicketId) {
       this.$refs.deleteTicketModalRef.eventTicketId = eventTicketId
       this.$refs.deleteTicketModalRef.$refs.modalRef.openModal()
     },

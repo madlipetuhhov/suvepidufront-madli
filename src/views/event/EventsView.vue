@@ -47,16 +47,16 @@
         </div>
         <ul class="icons-event-card">
           <li>
-            <font-awesome-icon @click="navigateToEditEvent(mainEventInfo.mainEventId)" class="cursor-pointer icon"
+            <font-awesome-icon @click="navigateToEditEvent(mainEventInfo.mainEventId)" class="icon"
                                :icon="['far', 'pen-to-square']"/>
           </li>
           <li>
-            <font-awesome-icon @click="navigateToViewEvent(mainEventInfo.mainEventId)" class="cursor-pointer icon-view"
+            <font-awesome-icon @click="navigateToViewEvent(mainEventInfo.mainEventId)" class="icon-view"
                                :icon="['far', 'eye']"/>
           </li>
           <li>
             <font-awesome-icon @click="openDeleteMainEventModal(mainEventInfo.mainEventId)"
-                               class="cursor-pointer icon-delete"
+                               class="icon-delete"
                                :icon="['far', 'trash-can']"/>
           </li>
         </ul>
@@ -69,7 +69,7 @@
         <div class="event-info">
           <h3>Lisa sündmus</h3>
           <div class="icon-event-card-new">
-            <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="cursor-pointer icon"/>
+            <font-awesome-icon @click="navigateToAddEvent" :icon="['fas', 'plus']" class="icon"/>
           </div>
         </div>
       </figure>

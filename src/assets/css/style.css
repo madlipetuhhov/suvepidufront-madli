@@ -49,58 +49,64 @@ p {
 
 /* ICONS */
 .icon {
-    color: #6A704C;
+    color: #555a3d;
+    cursor: pointer;
 }
 
 .icon:hover {
-    color: #40432e;
+    color: #6a704c;
 }
 
 .icon-view {
-    color: #7cb2d9;
+    color: #5b839f;
+    cursor: pointer;
 }
 
 .icon-view:hover {
-    color: #5b839f;
+    color: #6b8fa9;
 }
 
 .icon-delete {
-    color: #c52626;
+    color: #8a1b1b;
+    cursor: pointer;
 }
 
 .icon-delete:hover {
-    color: #761717;
+    color: #c52626;
 }
 
 /* BUTTONS */
 .button-success {
-    background-color: #6A704C;
-    border: #6A704C;
+    background-color: #555a3d;
+    border: #555a3d;
+    cursor: pointer;
 }
 
 .button-success:hover {
-    background-color: #888d70;
+    background-color: #6a704c;
 }
 
 .button-danger {
-    background-color: #c52626;
-    border: #c52626;
+    background-color: #8a1b1b;
+    border: #8a1b1b;
+    cursor: pointer;
 }
 
 .button-danger:hover {
-    background-color: #d15151;
+    background-color: #c52626;
 }
 
 .button-neutral {
     background-color: #5b839f;
-    border: #5b839f;
+    border:#5b839f;
+    cursor: pointer;
 }
 
 .button-neutral:hover {
-    background-color: #7c9cb2;
+    background-color: #6b8fa9;
 }
 
-.buttons-row{
+.buttons-row {
     display: flex;
     gap: 32px;
     justify-content: center;
@@ -131,18 +137,18 @@ p {
     padding: 20px;
 }
 
-.modal-content{
+.modal-content {
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
 }
 
-.modal-header{
+.modal-header {
     flex-shrink: unset;
     gap: 16px;
 }
 
-.modal-title{
+.modal-title {
     margin: 0;
 }
 
@@ -151,13 +157,9 @@ p {
     box-sizing: border-box;
 }
 
-.modal-footer{
+.modal-footer {
     display: flex;
     gap: 24px;
-}
-
-.login-form-control {
-width: 250px;
 }
 
 /* EVENT DETAIL MODAL */
@@ -327,8 +329,8 @@ width: 250px;
     padding: 10px 20px;
     color: #2a2d1e;
     cursor: pointer;
-    width: 100%; /* Ensure button takes full width */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .button-event-card:hover {

@@ -17,7 +17,7 @@
             <td>{{ ticketType.ticketTypeName }}</td>
             <td>{{ ticketType.ticketTypePrice }}</td>
             <td>
-              <font-awesome-icon @click="openTicketTypeEditModal(ticketType.ticketTypeId)" class="cursor-pointer"
+              <font-awesome-icon @click="openTicketTypeEditModal(ticketType.ticketTypeId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
           </tr>
@@ -25,7 +25,7 @@
         </table>
 
         <div>
-          <font-awesome-icon @click="openTicketTypeModal" :icon="['fas', 'plus']"/>
+          <font-awesome-icon @click="openTicketTypeModal" :icon="['fas', 'plus']" class="icon"/>
         </div>
 
       </div>

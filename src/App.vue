@@ -131,7 +131,7 @@ nav {
 
 .global-nav a {
   text-decoration: none;
-  color: #40432e;
+  color: #2a2d1e;
   font-weight: bold;
   font-size: 20px;
 }

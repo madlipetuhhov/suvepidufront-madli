@@ -9,11 +9,11 @@
           <div class="col">
             <div class="mb-3">
               <label for="username" class="form-label">Kasutajanimi</label>
-              <input v-model="username" type="text" class="form-control login-form-control" id="username">
+              <input v-model="username" type="text" class="form-control" id="username">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Parool</label>
-              <input v-model="password" type="password" class="form-control login-form-control" id="password">
+              <input v-model="password" type="password" class="form-control" id="password">
             </div>
           </div>
         </div>
