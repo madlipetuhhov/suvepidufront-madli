@@ -1,11 +1,12 @@
 <template>
-  <LoginModal ref="heroLoginModalRef"/>
+  <LoginModal ref="loginModalRef" @event-update-nav-menu="updateNavMenu"/>
+
   <header>
     <div class="hero-container">
       <h2>Hea pidu hea ilmaga!</h2>
       <p>Kõik piletid Eesti suvesündmustele ühest kohast - loo konto, vali sündmus, osta piletid ja pidutse!</p>
 
-      <div class="hero-buttons">
+      <div v-if="isLoggedIn=true" class="hero-buttons">
         <button @click="openLogInModal" type="submit"
                 class="button-success btn btn-primary text-center text-nowrap">
           Logi sisse
@@ -26,13 +27,36 @@ import LoginModal from "@/components/modal/login/LoginModal.vue";
 export default {
   name: 'Hero',
   components: {LoginModal},
+  data() {
+    return {
+      isLoggedIn: false,
+      isAdmin: false
+    }
+  },
   methods: {
     openLogInModal() {
-      this.$refs.heroLoginModalRef.$refs.modalRef.openModal()
+      this.$refs.loginModalRef.$refs.modalRef.openModal();
     },
 
     navigateToNewUserView() {
       router.push({name: 'newUserRoute'})
+    },
+
+    updateNavMenu() {
+      this.updateIsLoggedInValue()
+      this.updateIsAdminValue()
+    },
+
+    updateIsLoggedInValue() {
+      let userId = sessionStorage.getItem('userId')
+      this.isLoggedIn = userId !== null
+    },
+
+    updateIsAdminValue() {
+      if (this.isLoggedIn) {
+        let roleName = sessionStorage.getItem('roleName');
+        this.isAdmin = roleName === 'korraldaja'
+      }
     },
   }
 }

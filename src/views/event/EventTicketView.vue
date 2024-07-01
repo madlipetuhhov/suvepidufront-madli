@@ -7,7 +7,14 @@
       <DeleteTicketModal ref="deleteTicketModalRef" @event-tickets-removed="handleTicketsRemovedEvent"/>
     </div>
 
-    <h1>{{ mainEventName }}</h1>
+    <h1>{{ mainEventInfoShort.mainEventTitle }}</h1>
+
+    <div>
+      <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"
+              class="button-success btn btn-primary text-center text-nowrap">
+        Lisa piletitüübid & hinnad
+      </button>
+    </div>
 
     <div v-if="eventTicketInfo.length > 0" class="row justify-content-center">
       <div class="col-8">
@@ -56,7 +63,6 @@ export default {
   data() {
     return {
       eventDetailId: Number(useRoute().query.eventDetailId),
-      mainEventName: '',
       successMessage: '',
 
       eventTicketInfo: [
@@ -67,10 +73,20 @@ export default {
           available: 0,
           status: ''
         }
-      ]
+      ],
+
+      mainEventInfoShort: {
+        mainEventId: 0,
+        mainEventTitle: ''
+      }
+
     }
   },
   methods: {
+    navigateToTicketTypes(mainEventId) {
+      router.push({ name: 'eventTicketTypeRoute', query: { mainEventId: mainEventId } });
+    },
+
     sendGetEventTicketsRequest() {
       this.$http.get("/tickets", {
         params: {
@@ -83,14 +99,14 @@ export default {
       })
     },
 
-    sendGetMainEventNameRequest() {
-      this.$http.get("/event/name", {
+    sendGetMainEventInfoShortRequest() {
+      this.$http.get("/event/name-id", {
             params: {
               eventDetailId: this.eventDetailId
             }
           }
       ).then(response => {
-        this.mainEventName = response.data
+        this.mainEventInfoShort = response.data
       }).catch(() => {
         router.push({name: 'errorRoute'})
       })
@@ -118,7 +134,7 @@ export default {
   },
   beforeMount() {
     this.sendGetEventTicketsRequest()
-    this.sendGetMainEventNameRequest()
+    this.sendGetMainEventInfoShortRequest()
   }
 }
 </script>
