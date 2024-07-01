@@ -3,10 +3,9 @@
     <header>
       <Hero/>
     </header>
-    <section class="container text-center">
-      <h2>Homeview vaade</h2>
-    </section>
-
+<!--    <section class="container text-center">-->
+<!--      <h2>Homeview vaade</h2>-->
+<!--    </section>-->
   </div>
 </template>
 

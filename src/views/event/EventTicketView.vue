@@ -9,7 +9,7 @@
 
     <h1>{{ mainEventName }}</h1>
 
-    <div class="row justify-content-center">
+    <div v-if="eventTicketInfo.length > 0" class="row justify-content-center">
       <div class="col-8">
         <table class="table">
           <thead>
@@ -35,7 +35,6 @@
                                  class="icon-delete"
                                  :icon="['far', 'trash-can']"/>
             </td>
-
           </tr>
           </tbody>
         </table>
