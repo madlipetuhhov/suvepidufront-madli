@@ -9,9 +9,9 @@
 
     <h1>{{ mainEventInfoShort.mainEventTitle }}</h1>
 
-    <div>
+    <div v-if="eventTicketInfo.length <= 0">
       <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
+              class="button-success btn btn-primary text-center text-nowrap btn-navigate">
         Lisa piletitüübid & hinnad
       </button>
     </div>
@@ -138,3 +138,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.btn-navigate {
+  font-size: 20px;
+  font-weight: 600;
+  display: inline-block;
+  padding: 16px 32px;
+  border-radius: 9px;
+}
+</style>

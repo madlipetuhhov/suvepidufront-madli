@@ -1,16 +1,10 @@
 <template>
-  <LoginModal ref="loginModalRef" @event-update-nav-menu="updateNavMenu"/>
-
   <header>
     <div class="hero-container">
       <h2>Hea pidu hea ilmaga!</h2>
       <p>Kõik piletid Eesti suvesündmustele ühest kohast - loo konto, vali sündmus, osta piletid ja pidutse!</p>
 
-      <div v-if="isLoggedIn=true" class="hero-buttons">
-        <button @click="openLogInModal" type="submit"
-                class="button-success btn btn-primary text-center text-nowrap">
-          Logi sisse
-        </button>
+      <div v-if="isNewUser" class="hero-button">
         <button @click="navigateToNewUserView" type="submit"
                 class="button-neutral btn btn-primary text-center text-nowrap">
           Loo konto
@@ -29,35 +23,25 @@ export default {
   components: {LoginModal},
   data() {
     return {
-      isLoggedIn: false,
-      isAdmin: false
+      isNewUser: true
     }
   },
+  //  created lifecycle hook calls checkUserStatus when the component is created.
+  //  This ensures the user's login status is checked as soon as the component is loaded.
+  created() {
+    this.checkUserStatus();
+  },
   methods: {
-    openLogInModal() {
-      this.$refs.loginModalRef.$refs.modalRef.openModal();
-    },
-
     navigateToNewUserView() {
-      router.push({name: 'newUserRoute'})
+      router.push({ name: 'newUserRoute' });
     },
 
-    updateNavMenu() {
-      this.updateIsLoggedInValue()
-      this.updateIsAdminValue()
-    },
-
-    updateIsLoggedInValue() {
-      let userId = sessionStorage.getItem('userId')
-      this.isLoggedIn = userId !== null
-    },
-
-    updateIsAdminValue() {
-      if (this.isLoggedIn) {
-        let roleName = sessionStorage.getItem('roleName');
-        this.isAdmin = roleName === 'korraldaja'
-      }
-    },
+    // Checks the session storage for userId to determine if the user is logged in. If userId exists,
+    // isNewUser is set to false; otherwise, it remains true.
+    checkUserStatus() {
+      let userId = sessionStorage.getItem('userId');
+      this.isNewUser = userId === null;
+    }
   }
 }
 </script>
@@ -110,7 +94,7 @@ header {
   border-radius: 9px;
 }
 
-.hero-buttons {
+.hero-button {
   display: flex;
   justify-content: center;
   gap: 32px;
