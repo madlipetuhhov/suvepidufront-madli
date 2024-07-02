@@ -12,9 +12,14 @@ import {useRoute} from "vue-router";
 
 export default {
   name: 'TicketTypeDropdown',
+  props: {
+    mainEventId: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
-      eventDetailId: Number(useRoute().query.eventDetailId),
       selectedTicketTypeId: 0,
       ticketTypes: [
         {
@@ -29,7 +34,7 @@ export default {
     sendGetTicketTypesRequest() {
       this.$http.get("/ticket-types", {
             params: {
-              eventDetailId: this.eventDetailId
+             mainEventId: this.mainEventId
             }
           }
       ).then(response => {

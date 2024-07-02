@@ -6,6 +6,10 @@
 
     <template #body>
       <div>
+        <div v-if="isAdd" class="mb-3">
+          <label class="form-label">Maakond</label>
+          <TicketTypeDropdown ref="ticketTypeDropdownRef" @event-selected-ticket-type-change="setSelectedTicketTypeId" :mainEventId="mainEventId"/>
+        </div>
         <div class="mb-3">
           <label for="ticket-type" class="form-label">Valitud piletitüüp</label>
           <input v-model="eventTicketInfo.ticketTypeName" type="text" class="form-control" readonly="readonly" disabled>
@@ -23,7 +27,9 @@
     </template>
 
     <template #buttons>
-      <button @click="sendPutEditTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
+      <button v-if="isAdd" @click="sendAddTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
+      </button>
+      <button v-else @click="sendPutEditTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
       </button>
       <button @click="closeTicketModal" type="button" class="button-danger btn btn-primary text-center text-nowrap">
         Loobu
@@ -36,15 +42,23 @@
 import Modal from "@/components/modal/Modal.vue";
 import router from "@/router";
 import {useRoute} from "vue-router";
+import TicketTypeDropdown from "@/components/dropdown/TicketTypeDropdown.vue";
 
 export default {
   name: "TicketModal",
-  components: {Modal},
-
+  components: {TicketTypeDropdown, Modal},
+  props: {
+    mainEventId: {
+      type: Number,
+      required: true
+    },
+  },
   data() {
     return {
+      isAdd: true,
       eventDetailId: Number(useRoute().query.eventDetailId),
       eventTicketId: 0,
+      selectedTicketTypeId: 0,
 
       eventTicketRequest: {
         ticketTypeId: 0,
@@ -61,22 +75,19 @@ export default {
     }
   },
   methods: {
-    // sendAddTicketsRequest() {
-    //   this.$http.post("/ticket", this.eventTicketRequest, {
-    //         params: {
-    //           eventDetailId: this.eventDetailId
-    //         }
-    //       }
-    //   ).then(() => {
-    //     this.closeTicketModal()
-    //     this.$emit('event-tickets-edited-or-added')
-    //   }).catch(() => {
-    //     router.push({name: 'errorRoute'})
-    //   })
-    // },
-
-    // Esialgu ainult put meetod, sest piletitüüpide lisamine ei toimu siin.
-    // Koguste muutmine siin vaates, st ka kogust 0 muudetakse, mitte lisatakse.
+    sendAddTicketsRequest() {
+      this.$http.post("/ticket", this.eventTicketRequest, {
+            params: {
+              eventDetailId: this.eventDetailId
+            }
+          }
+      ).then(() => {
+        this.closeTicketModal()
+        this.$emit('event-tickets-edited-or-added')
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    },
 
     sendPutEditTicketsRequest() {
       this.$http.put("/ticket", this.eventTicketInfo
@@ -101,7 +112,17 @@ export default {
       })
     },
 
+    setSelectedTicketTypeId(selectedTicketTypeId) {
+      this.eventTicketRequest.ticketTypeId = selectedTicketTypeId
+    },
+
+    handleOpenTicketModal() {
+      this.isAdd = true
+      this.$refs.modalRef.openModal()
+    },
+
     handleOpenTicketModalAsEdit(eventTicketId) {
+      this.isAdd = false
       this.eventTicketId = eventTicketId
       this.sendGetTicketRequest(eventTicketId)
       this.$refs.modalRef.openModal()
@@ -110,6 +131,13 @@ export default {
     closeTicketModal() {
       this.$refs.modalRef.closeModal()
     },
+
+    emitMainEventId() {
+      this.$emit('send-main-event-id', this.mainEventId);
+    }
+  },
+  mounted() {
+    this.emitMainEventId();
   }
 }
 </script>

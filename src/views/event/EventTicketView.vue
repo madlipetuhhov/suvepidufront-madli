@@ -3,28 +3,35 @@
 
     <div>
       <AlertSuccess :message="successMessage"/>
-      <TicketModal ref="ticketModalRef" @event-tickets-edited-or-added="sendGetEventTicketsRequest"/>
+      <TicketModal ref="ticketModalRef" @event-tickets-edited-or-added="sendGetEventTicketsRequest" @event-send-main-event-id="sendMainEventId" :mainEventId="mainEventInfoShort.mainEventId"/>
       <DeleteTicketModal ref="deleteTicketModalRef" @event-tickets-removed="handleTicketsRemovedEvent"/>
     </div>
 
     <h1>{{ mainEventInfoShort.mainEventTitle }}</h1>
 
-    <div v-if="eventTicketInfo.length <= 0">
-      <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap btn-navigate">
-        Lisa piletitüübid & hinnad
+<!--    <div v-if="eventTicketInfo.length <= 0">-->
+<!--      <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"-->
+<!--              class="button-success btn btn-primary text-center text-nowrap">-->
+<!--        Lisa piletitüübid & hinnad-->
+<!--      </button>-->
+<!--    </div>-->
+
+    <div>
+      <button @click="openTicketModal" type="submit"
+              class="button-success btn btn-primary text-center text-nowrap">
+        Lisa piletite kogused
       </button>
     </div>
 
-    <div v-if="eventTicketInfo.length > 0" class="row justify-content-center">
-      <div class="col-8">
+    <div v-if="eventTicketInfo.length > 0" class="row justify-content-center mt-3">
+      <div class="col-9">
         <table class="table">
           <thead>
           <tr>
             <th scope="col">Piletitüüp</th>
             <th scope="col">Piletite kogus</th>
             <th scope="col">Saadaval piletid</th>
-            <th scope="col">Lisa & muuda</th>
+            <th scope="col">Muuda</th>
             <th scope="col">Kustuta</th>
           </tr>
           </thead>
@@ -33,7 +40,7 @@
             <td>{{ tickets.ticketTypeName }}</td>
             <td>{{ tickets.total }}</td>
             <td>{{ tickets.available }}</td>
-            <td>
+            <td >
               <font-awesome-icon @click="openTicketEditModal(tickets.eventTicketId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
@@ -78,13 +85,17 @@ export default {
       mainEventInfoShort: {
         mainEventId: 0,
         mainEventTitle: ''
-      }
+      },
 
     }
   },
   methods: {
-    navigateToTicketTypes(mainEventId) {
-      router.push({ name: 'eventTicketTypeRoute', query: { mainEventId: mainEventId } });
+    // navigateToTicketTypes(mainEventId) {
+    //   router.push({ name: 'eventTicketTypeRoute', query: { mainEventId: mainEventId } });
+    // },
+
+    sendMainEventId() {
+      this.$refs.ticketModalRef.$emit('mainEventId', this.mainEventInfoShort.mainEventId);
     },
 
     sendGetEventTicketsRequest() {
@@ -112,6 +123,10 @@ export default {
       })
     },
 
+    openTicketModal() {
+      this.$refs.ticketModalRef.handleOpenTicketModal()
+    },
+
     openTicketEditModal(eventTicketId) {
       this.$refs.ticketModalRef.handleOpenTicketModalAsEdit(eventTicketId)
     },
@@ -133,18 +148,8 @@ export default {
 
   },
   beforeMount() {
-    this.sendGetEventTicketsRequest()
     this.sendGetMainEventInfoShortRequest()
+    this.sendGetEventTicketsRequest()
   }
 }
 </script>
-
-<style>
-.btn-navigate {
-  font-size: 20px;
-  font-weight: 600;
-  display: inline-block;
-  padding: 16px 32px;
-  border-radius: 9px;
-}
-</style>
