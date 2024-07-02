@@ -3,18 +3,19 @@
 
     <div>
       <AlertSuccess :message="successMessage"/>
-      <TicketModal ref="ticketModalRef" @event-tickets-edited-or-added="sendGetEventTicketsRequest" @event-send-main-event-id="sendMainEventId" :mainEventId="mainEventInfoShort.mainEventId"/>
+      <TicketModal ref="ticketModalRef" @event-tickets-edited-or-added="sendGetEventTicketsRequest"
+                   @event-send-main-event-id="sendMainEventId" :mainEventId="mainEventInfoShort.mainEventId"/>
       <DeleteTicketModal ref="deleteTicketModalRef" @event-tickets-removed="handleTicketsRemovedEvent"/>
     </div>
 
     <h1>{{ mainEventInfoShort.mainEventTitle }}</h1>
-
-<!--    <div v-if="eventTicketInfo.length <= 0">-->
-<!--      <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"-->
-<!--              class="button-success btn btn-primary text-center text-nowrap">-->
-<!--        Lisa piletitüübid & hinnad-->
-<!--      </button>-->
-<!--    </div>-->
+    <div>TODO: puudu kuvamine, mis tüüpidel on hind-kogus puudu</div>
+    <div>
+      <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"
+              class="button-success btn btn-primary text-center text-nowrap">
+        Lisa piletitüübid & hinnad
+      </button>
+    </div>
 
     <div>
       <button @click="openTicketModal" type="submit"
@@ -23,7 +24,7 @@
       </button>
     </div>
 
-    <div v-if="eventTicketInfo.length > 0" class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-3">
       <div class="col-9">
         <table class="table">
           <thead>
@@ -40,7 +41,7 @@
             <td>{{ tickets.ticketTypeName }}</td>
             <td>{{ tickets.total }}</td>
             <td>{{ tickets.available }}</td>
-            <td >
+            <td>
               <font-awesome-icon @click="openTicketEditModal(tickets.eventTicketId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
@@ -86,13 +87,12 @@ export default {
         mainEventId: 0,
         mainEventTitle: ''
       },
-
     }
   },
   methods: {
-    // navigateToTicketTypes(mainEventId) {
-    //   router.push({ name: 'eventTicketTypeRoute', query: { mainEventId: mainEventId } });
-    // },
+    navigateToTicketTypes(mainEventId) {
+      router.push({name: 'eventTicketTypeRoute', query: {mainEventId: mainEventId}});
+    },
 
     sendMainEventId() {
       this.$refs.ticketModalRef.$emit('mainEventId', this.mainEventInfoShort.mainEventId);
@@ -145,7 +145,6 @@ export default {
     resetSuccessMessage() {
       this.successMessage = ''
     },
-
   },
   beforeMount() {
     this.sendGetMainEventInfoShortRequest()

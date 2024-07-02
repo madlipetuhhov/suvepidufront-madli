@@ -84,6 +84,7 @@ export default {
   },
 
   created() {
+    this.updateNavMenu();
     this.$nextTick(() => {
       const navbar = this.$refs.navbar;
       if (navbar) {
@@ -91,6 +92,7 @@ export default {
       }
     });
   },
+
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   }

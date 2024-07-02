@@ -7,13 +7,13 @@
     <template #body>
       <div>
         <div v-if="isAdd" class="mb-3">
-          <label class="form-label">Maakond</label>
+          <label class="form-label">Piletitüüp</label>
           <TicketTypeDropdown ref="ticketTypeDropdownRef" @event-selected-ticket-type-change="setSelectedTicketTypeId" :mainEventId="mainEventId"/>
         </div>
-        <div class="mb-3">
-          <label for="ticket-type" class="form-label">Valitud piletitüüp</label>
-          <input v-model="eventTicketInfo.ticketTypeName" type="text" class="form-control" readonly="readonly" disabled>
-        </div>
+<!--        <div class="mb-3">-->
+<!--          <label for="ticket-type" class="form-label">Valitud piletitüüp</label>-->
+<!--          <input v-model="eventTicketInfo.ticketTypeName" type="text" class="form-control" readonly="readonly" disabled>-->
+<!--        </div>-->
         <div class="mb-3">
           <label for="ticket-price" class="form-label">Piletite arv</label>
           <input v-model="eventTicketInfo.total" type="number" class="form-control">
@@ -27,7 +27,9 @@
     </template>
 
     <template #buttons>
-      <button v-if="isAdd" @click="sendAddTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
+      <button v-if="isAdd && this.eventTicketRequest.ticketTypeId === 0" disabled type="button" class="btn button-neutral btn-light">Tüüp puudu
+      </button>
+      <button v-else-if="isAdd" @click="sendAddTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
       </button>
       <button v-else @click="sendPutEditTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
       </button>
@@ -62,7 +64,8 @@ export default {
 
       eventTicketRequest: {
         ticketTypeId: 0,
-        total: 0
+        total: 0,
+        available: 0
       },
 
       eventTicketInfo: {
@@ -76,6 +79,8 @@ export default {
   },
   methods: {
     sendAddTicketsRequest() {
+      this.eventTicketRequest.total = this.eventTicketInfo.total;
+      this.eventTicketRequest.available = this.eventTicketInfo.available;
       this.$http.post("/ticket", this.eventTicketRequest, {
             params: {
               eventDetailId: this.eventDetailId
