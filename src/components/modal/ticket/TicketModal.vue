@@ -5,7 +5,7 @@
     </template>
 
     <template #body>
-      <div class="container text-center">
+      <div>
         <div class="mb-3">
           <label for="ticket-type" class="form-label">Valitud piletitüüp</label>
           <input v-model="eventTicketInfo.ticketTypeName" type="text" class="form-control" readonly="readonly" disabled>

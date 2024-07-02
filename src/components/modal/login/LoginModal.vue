@@ -4,7 +4,7 @@
       Logi sisse
     </template>
     <template #body>
-      <div class="container text-start">
+      <div>
         <div class="row justify-content-center">
           <div class="col">
             <div class="mb-3">
