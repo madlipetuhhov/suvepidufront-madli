@@ -29,7 +29,7 @@
     <template #buttons>
       <button v-if="isAdd && this.eventTicketRequest.ticketTypeId === 0" disabled type="button" class="btn button-neutral btn-light">Tüüp puudu
       </button>
-      <button v-else-if="isAdd" @click="sendAddTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
+      <button v-else-if="isAdd" @click="sendAddTicketsRequest" type="button" class="btn button-success btn-primary">Lisa
       </button>
       <button v-else @click="sendPutEditTicketsRequest" type="button" class="btn button-neutral btn-primary">Salvesta
       </button>

@@ -83,11 +83,11 @@ Location(s) details:
 
 Ticket amount for each location:
 1. Navigate to the 'Piletid' view by clicking the button located in the locations table.
-2. Click the plus button at the bottom of the table. This will open a modal where you can specify ticket amounts (Piletite arv) for each ticket type.
+2. Click the plus button at the bottom of the table. This will open a modal where you can specify ticket amounts (Piletite arv) and how many tickets are available (Saadaval piletid) for each ticket type.
 3. After adding all the information, click the 'Lisa' button.
 
 ## Editing Event
-You can also edit all the event details (title, location, features, categories, tickets etc.) in the same views used for adding the event.
+You can also edit all the event details (title, location, features, categories, tickets etc.) in the same views used for adding the event and details.
 
 ## Viewing Event
 This view is not ready yet.
