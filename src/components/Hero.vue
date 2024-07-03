@@ -2,15 +2,13 @@
   <header>
     <div class="hero-container">
       <h2>Hea pidu hea ilmaga!</h2>
-      <p>Kõik piletid Eesti suvesündmustele ühest kohast - loo konto, vali sündmus, osta piletid ja pidutse!</p>
-
+      <p>Kõik piletid Eesti suvesündmustele ühest kohast - loo konto ning osta ja müü pileteid!</p>
       <div v-if="isNewUser" class="hero-button">
         <button @click="navigateToNewUserView" type="submit"
                 class="button-neutral btn btn-primary text-center text-nowrap">
           Loo konto
         </button>
       </div>
-
     </div>
   </header>
 </template>
@@ -52,7 +50,7 @@ header {
   height: 100vh;
   background-image: linear-gradient(
       to bottom,
-      rgba(34, 34, 34, 0.3), /* Lighter color at the top */ rgba(34, 34, 34, 0.3) /* Darker color towards the bottom */
+      rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3)
   ), url(../assets/images/hero-aranxa-esteve-unsplash.jpg);
   background-size: cover;
   background-position: center;
