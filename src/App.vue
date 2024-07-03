@@ -45,18 +45,6 @@ export default {
     }
   },
   methods: {
-    handleScroll() {
-      const currentScrollY = window.scrollY;
-      const navbar = this.$refs.navbar;
-
-      if (currentScrollY > this.lastScrollY) {
-        navbar.style.top = '-220px';
-      } else {
-        navbar.style.top = '0';
-      }
-      this.lastScrollY = currentScrollY;
-    },
-
     updateNavMenu() {
       this.updateIsLoggedInValue()
       this.updateIsAdminValue()
@@ -80,6 +68,18 @@ export default {
 
     openLogOutModal() {
       this.$refs.logOutModalRef.$refs.modalRef.openModal()
+    },
+
+    handleScroll() {
+      const currentScrollY = window.scrollY;
+      const navbar = this.$refs.navbar;
+
+      if (currentScrollY > this.lastScrollY) {
+        navbar.style.top = '-220px';
+      } else {
+        navbar.style.top = '0';
+      }
+      this.lastScrollY = currentScrollY;
     },
   },
 

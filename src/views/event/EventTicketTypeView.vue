@@ -1,9 +1,11 @@
 <template>
+  <div>
+    <TicketTypeModal ref="ticketTypesModalRef" @event-ticket-type-edited-or-added="sendGetTicketTypesRequest"/>
+  </div>
   <div class="container text-center page-content">
     <h1>{{ mainEventName }}</h1>
     <div class="row justify-content-center">
       <div class="col-8">
-
         <table class="table">
           <thead>
           <tr>
@@ -21,20 +23,15 @@
                                  :icon="['far', 'pen-to-square']"/>
             </td>
           </tr>
+          <tr>
+            <td colspan="3">
+              <font-awesome-icon @click="openTicketTypeModal" :icon="['fas', 'plus']" class="icon"/>
+            </td>
+          </tr>
           </tbody>
         </table>
-
-        <div>
-          <font-awesome-icon @click="openTicketTypeModal" :icon="['fas', 'plus']" class="icon"/>
-        </div>
-
       </div>
     </div>
-
-    <div>
-      <TicketTypeModal ref="ticketTypesModalRef" @event-ticket-type-edited-or-added="sendGetTicketTypesRequest"/>
-    </div>
-
   </div>
 </template>
 
@@ -103,5 +100,4 @@ export default {
     this.sendGetMainEventNameRequest()
   }
 }
-
 </script>

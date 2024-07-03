@@ -10,14 +10,14 @@
 
     <h1>{{ mainEventInfoShort.mainEventTitle }}</h1>
     <div>TODO: puudu kuvamine, mis tüüpidel on hind-kogus puudu</div>
-    <div>
+    <div class="ticket-container">
       <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"
               class="button-success btn btn-primary text-center text-nowrap">
         Lisa piletitüübid & hinnad
       </button>
-    </div>
 
-    <div>
+
+
       <button @click="openTicketModal" type="submit"
               class="button-success btn btn-primary text-center text-nowrap">
         Lisa piletite kogused
@@ -90,14 +90,6 @@ export default {
     }
   },
   methods: {
-    navigateToTicketTypes(mainEventId) {
-      router.push({name: 'eventTicketTypeRoute', query: {mainEventId: mainEventId}});
-    },
-
-    sendMainEventId() {
-      this.$refs.ticketModalRef.$emit('mainEventId', this.mainEventInfoShort.mainEventId);
-    },
-
     sendGetEventTicketsRequest() {
       this.$http.get("/tickets", {
         params: {
@@ -134,6 +126,14 @@ export default {
     openTicketDeleteModal(eventTicketId) {
       this.$refs.deleteTicketModalRef.eventTicketId = eventTicketId
       this.$refs.deleteTicketModalRef.$refs.modalRef.openModal()
+    },
+
+    navigateToTicketTypes(mainEventId) {
+      router.push({name: 'eventTicketTypeRoute', query: {mainEventId: mainEventId}});
+    },
+
+    sendMainEventId() {
+      this.$refs.ticketModalRef.$emit('mainEventId', this.mainEventInfoShort.mainEventId);
     },
 
     handleTicketsRemovedEvent() {

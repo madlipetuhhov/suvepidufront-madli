@@ -24,6 +24,7 @@
         <label class="form-label">Aadress</label>
         <input v-model="eventDetailInfo.address" type="text" class="form-control">
       </div>
+      <div>TODO: pikkuskraad ja laiuskraad ei ole kaardiga implementeeritud</div>
       <div class="mb-3">
         <label class="form-label">Pikkuskraad</label>
         <input v-model="eventDetailInfo.longitude" type="text" class="form-control">

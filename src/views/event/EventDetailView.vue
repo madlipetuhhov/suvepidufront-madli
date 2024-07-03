@@ -18,7 +18,7 @@
             <th scope="col">Asukoht</th>
             <!--            <th scope="col">Pikkuskraad</th>-->
             <!--            <th scope="col">Laiuskraad</th>-->
-            <th scope="col">Lisa piletid</th>
+            <th scope="col">Piletid</th>
             <th scope="col">Muuda</th>
             <th scope="col">Kustuta</th>
           </tr>
@@ -33,29 +33,26 @@
             <td>{{ eventDetail.address }}</td>
             <!--            <td>{{ eventDetail.longitude }}</td>-->
             <!--            <td>{{ eventDetail.latitude }}</td>-->
-
             <td>
               <button @click="navigateToEventTickets(eventDetail.eventDetailId)" type="button" class="button-success btn btn-primary">Piletid
               </button>
             </td>
-
             <td>
               <font-awesome-icon @click="openEventDetailEditModal(eventDetail.eventDetailId)" class="icon"
                                  :icon="['far', 'pen-to-square']"/>
             </td>
-
             <td>
               <font-awesome-icon @click="openDeleteEventDetailModal" class="icon-delete"
                                  :icon="['far', 'trash-can']"/>
             </td>
           </tr>
+          <tr>
+            <td colspan="8">
+            <font-awesome-icon @click="openEventDetailModal" :icon="['fas', 'plus']" class="icon"/>
+            </td>
+          </tr>
           </tbody>
         </table>
-
-        <div>
-          <font-awesome-icon @click="openEventDetailModal" :icon="['fas', 'plus']" class="icon"/>
-        </div>
-
       </div>
     </div>
 

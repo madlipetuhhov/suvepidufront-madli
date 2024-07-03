@@ -3,7 +3,6 @@
     <h1>{{ mainEventName }}</h1>
     <div class="row justify-content-center">
       <div class="col-8">
-
         <table class="table">
           <thead>
           <tr>
@@ -82,22 +81,10 @@ export default {
           isAvailable: false
         }
       ]
-
     }
   },
   methods: {
-    openFeatureModal() {
-      this.$refs.featureModalRef.decideIfNewOrEditFeatures(this.mainEventId)
-      this.$refs.featureModalRef.$refs.modalRef.openModal()
-    },
-
-    openCategoryModal() {
-      this.$refs.categoryModalRef.decideIfNewOrEditCategories(this.mainEventId)
-      this.$refs.categoryModalRef.$refs.modalRef.openModal()
-    },
-
     sendGetSelectedFeaturesRequest() {
-      console.log(this.mainEventId)
       this.$http.get("/event/features", {
             params: {
               mainEventId: this.mainEventId
@@ -135,6 +122,16 @@ export default {
       }).catch(() => {
         router.push({name: 'errorRoute'})
       })
+    },
+
+    openFeatureModal() {
+      this.$refs.featureModalRef.decideIfNewOrEditFeatures(this.mainEventId)
+      this.$refs.featureModalRef.$refs.modalRef.openModal()
+    },
+
+    openCategoryModal() {
+      this.$refs.categoryModalRef.decideIfNewOrEditCategories(this.mainEventId)
+      this.$refs.categoryModalRef.$refs.modalRef.openModal()
     },
   },
 

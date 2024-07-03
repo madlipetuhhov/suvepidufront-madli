@@ -345,3 +345,11 @@ p {
     padding-left: 0;
 }
 
+/* TICKETS */
+
+.ticket-container{
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin: 12px 0;
+}
