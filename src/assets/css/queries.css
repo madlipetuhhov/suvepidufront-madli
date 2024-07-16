@@ -17,6 +17,7 @@
 
     .logo{
         height: 7rem;
+        width: 7rem;
     }
 
     .global-nav a {
@@ -41,6 +42,7 @@
 }
 
 /* BELOW 600px (PHONES)*/
+/* TODO: ei ole responbsive mobiili jaoks */
 @media (max-width: 600px) {
     .event-cards {
         grid-template-columns: 1fr;
@@ -48,6 +50,7 @@
 
     .logo{
         height: 5rem;
+        width: 5rem;
     }
 
     .hero-container {
