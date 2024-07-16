@@ -1,11 +1,11 @@
 <template>
   <header>
     <div class="hero-container">
-      <h2>Hea pidu hea ilmaga!</h2>
-      <p>Kõik piletid Eesti suvesündmustele ühest kohast - loo konto ning osta ja müü pileteid!</p>
+      <h2 class="hero-title">Hea pidu hea ilmaga!</h2>
+      <p class="hero-text">Kõik piletid Eesti suvesündmustele ühest kohast - loo konto ning osta ja müü pileteid!</p>
       <div v-if="isNewUser" class="hero-button">
         <button @click="navigateToNewUserView" type="submit"
-                class="btn-neutral btn">
+                class="btn-neutral btn-hero">
           Loo konto
         </button>
       </div>
@@ -45,56 +45,5 @@ export default {
 </script>
 
 <style scoped>
-header {
-  position: relative;
-  height: 100vh;
-  background-image: linear-gradient(
-      to bottom,
-      rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3)
-  ), url(../assets/images/hero-aranxa-esteve-unsplash.jpg);
-  background-size: cover;
-  background-position: center;
-  transition: height 0.3s ease-in-out;
-}
 
-.hero-container {
-  width: 100%;
-  max-width: 1200px;
-  position: absolute;
-  text-align: center;
-  padding: 0 15px;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, 0);
-  display: flex;
-  flex-direction: column;
-  gap: 35px;
-}
-
-.hero-container h2 {
-  color: #f0f1ed;
-  font-size: 62px;
-  line-height: 1.3;
-}
-
-.hero-container p {
-  color: #e1e2db;
-  font-size: 30px;
-  line-height: 1.05;
-  font-weight: 500;
-}
-
-.btn {
-  font-size: 20px;
-  font-weight: 600;
-  display: inline-block;
-  padding: 16px 32px;
-  border-radius: 9px;
-}
-
-.hero-button {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-}
 </style>
