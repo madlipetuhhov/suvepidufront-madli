@@ -28,18 +28,18 @@
           <ul class="buttons-event-card">
             <li>
               <button @click="navigateToFeaturesCategories(mainEventInfo.mainEventId)" type="button"
-                      class="button-event-card btn btn-primary">Võimalused & kategooriad
+                      class="btn-event-card btn">Võimalused & kategooriad
               </button>
             </li>
             <li>
               <button @click="navigateToTicketTypes(mainEventInfo.mainEventId)" type="button"
-                      class="button-event-card btn btn-primary">
+                      class="btn-event-card btn">
                 Piletitüübid
               </button>
             </li>
             <li>
               <button @click="navigateToEventDetail(mainEventInfo.mainEventId)" type="button"
-                      class="button-event-card btn btn-primary">
+                      class="btn-event-card btn">
                 Toimumiskohad & piletid
               </button>
             </li>

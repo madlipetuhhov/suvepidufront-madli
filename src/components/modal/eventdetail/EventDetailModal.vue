@@ -36,13 +36,13 @@
     </template>
     <template #buttons>
       <button v-if="isAdd" @click="sendAddEventDetailRequest" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">Lisa
+              class="btn-success btn">Lisa
       </button>
       <button v-else @click="sendPutEventDetailRequest" type="submit"
-              class="button-neutral btn btn-primary text-center text-nowrap">Salvesta
+              class="btn-neutral btn">Salvesta
       </button>
       <button @click="closeEventDetailModal" type="submit"
-              class="button-danger btn btn-primary text-center text-nowrap">Loobu
+              class="btn-danger btn">Loobu
       </button>
     </template>
 

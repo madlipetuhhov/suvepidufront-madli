@@ -5,7 +5,7 @@
       <p>Kõik piletid Eesti suvesündmustele ühest kohast - loo konto ning osta ja müü pileteid!</p>
       <div v-if="isNewUser" class="hero-button">
         <button @click="navigateToNewUserView" type="submit"
-                class="button-neutral btn btn-primary text-center text-nowrap">
+                class="btn-neutral btn">
           Loo konto
         </button>
       </div>
@@ -96,31 +96,5 @@ header {
   display: flex;
   justify-content: center;
   gap: 32px;
-}
-
-
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-  .hero-container {
-    width: 80%;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero-container {
-    width: 70%;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-container {
-    width: 80%;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero-container {
-    width: 90%;
-  }
 }
 </style>

@@ -6,7 +6,7 @@
     <div class="container">
       <div class="left">
         <router-link to="/">
-          <img src="../src/assets/images/logo.png" alt="company logo"/>
+          <img class="logo" src="../src/assets/images/logo.png" alt="company logo"/>
         </router-link>
       </div>
 
@@ -116,8 +116,8 @@ nav {
   padding: 32px 0;
 }
 
-.global-nav .container img {
-  width: 150px;
+.logo {
+  height: 10rem;
 }
 
 .global-nav .container .left {

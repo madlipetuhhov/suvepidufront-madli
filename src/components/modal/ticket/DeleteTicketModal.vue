@@ -8,11 +8,11 @@
     </template>
     <template #buttons>
       <button @click="sendDeleteTicketRequest" type="submit"
-              class="button-danger btn btn-primary text-center text-nowrap">
+              class="btn-danger btn">
         Jah
       </button>
       <button @click="closeDeleteTicketModal" type="submit"
-              class="button-neutral btn btn-primary text-center text-nowrap">Loobu
+              class="btn-neutral btn">Loobu
       </button>
     </template>
   </Modal>

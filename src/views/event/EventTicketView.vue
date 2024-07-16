@@ -12,14 +12,14 @@
     <div>TODO: puudu kuvamine, mis tüüpidel on hind-kogus puudu</div>
     <div class="ticket-container">
       <button @click="navigateToTicketTypes(mainEventInfoShort.mainEventId)" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
+              class="btn-success btn">
         Lisa piletitüübid & hinnad
       </button>
 
 
 
       <button @click="openTicketModal" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
+              class="btn-success btn">
         Lisa piletite kogused
       </button>
     </div>

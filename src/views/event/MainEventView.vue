@@ -30,11 +30,11 @@
 
       <div class="buttons-row">
         <button @click="addOrUpdateMainEvent" type="submit"
-                class="button-success btn btn-primary text-center text-nowrap">
+                class="btn-success btn">
           OK
         </button>
         <button @click="navigateToEventsView" type="submit"
-                class="button-danger btn btn-primary text-center text-nowrap">
+                class="btn-danger btn">
           Loobu
         </button>
       </div>

@@ -1,0 +1,37 @@
+/* BELOW 1350px (SMALL DESKTOPS)*/
+@media (max-width: 1350px) {
+}
+
+
+/* BELOW 1200px (LANDSCAPE TABLETS)*/
+@media (max-width: 1200px) {
+    .event-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-container {
+        width: 80%;
+    }
+}
+
+/* BELOW 900px (TABLETS)*/
+@media (max-width: 900px) {
+    .event-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-container {
+        width: 70%;
+    }
+}
+
+/* BELOW 600px (PHONES)*/
+@media (max-width: 600px) {
+    .event-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-container {
+        width: 90%;
+    }
+}

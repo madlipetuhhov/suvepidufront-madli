@@ -64,12 +64,10 @@ Default: 6px
 body {
     background-color: #fbf9f6;
     font-family: "Montserrat", sans-serif;
+    line-height: 1;
+    font-weight: 400;
     color: #2a2d1e;
     --bs-heading-color: #2a2d1e
-}
-
-.cursor-pointer {
-    cursor: pointer;
 }
 
 h1 {
@@ -120,34 +118,42 @@ p {
 }
 
 /* BUTTONS */
-.button-success {
+
+.btn-success, .btn-success:visited {
     background-color: #555a3d;
     border: #555a3d;
+    color: #fbf9f6;
     cursor: pointer;
 }
 
-.button-success:hover {
+.btn-success:hover, .btn-success:active, .btn-success:focus  {
     background-color: #6a704c;
+    color: #fbf9f6;
 }
 
-.button-danger {
+.btn-danger, .btn-danger:visited {
     background-color: #8a1b1b;
     border: #8a1b1b;
+    color: #fbf9f6;
     cursor: pointer;
 }
 
-.button-danger:hover {
+.btn-danger:hover, .btn-danger:active, .btn-danger:focus {
     background-color: #c52626;
+    color: #fbf9f6;
 }
 
-.button-neutral {
+.btn-neutral, .btn-neutral:visited {
     background-color: #5b839f;
-    border:#5b839f;
+    border: #5b839f;
+    color: #fbf9f6;
     cursor: pointer;
 }
 
-.button-neutral:hover {
+.btn-neutral:hover, .btn-neutral:active, .btn-neutral:focus {
     background-color: #6b8fa9;
+    border: #5b839f;
+    color: #fbf9f6;
 }
 
 .buttons-row {
@@ -292,43 +298,20 @@ p {
     overflow: hidden;
 }
 
-/* For screens smaller than 1200px, use 3 columns */
-@media (max-width: 1200px) {
-    .event-cards {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-/* For screens smaller than 900px, use 2 columns */
-@media (max-width: 900px) {
-    .event-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* For screens smaller than 600px, use 1 column */
-@media (max-width: 600px) {
-    .event-cards {
-        grid-template-columns: 1fr;
-    }
-}
-
 .event-img {
     padding: 0;
     max-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Ensure child elements respect the border-radius */
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+    overflow: hidden;
 }
 
 .event-img img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: inherit; /* Inherit border-radius from the parent */
+    border-radius: inherit;
 }
 
 .event-info {
@@ -367,7 +350,7 @@ p {
     margin: 0;
 }
 
-.button-event-card {
+.btn-event-card, .btn-event-card:visited {
     background-color: #fbf9f6;
     border: solid 2px #6A704C;
     padding: 10px 20px;
@@ -375,11 +358,13 @@ p {
     cursor: pointer;
     width: 100%;
     box-sizing: border-box;
+    font-weight: 400;
 }
 
-.button-event-card:hover {
+.btn-event-card:hover, .btn-event-card:active, .btn-event-card:focus {
     background-color: #6A704C;
     border: solid 2px #6A704C;
+    color: #fbf9f6;
 }
 
 .icon-event-card-new {
@@ -391,7 +376,7 @@ p {
 
 /* TICKETS */
 
-.ticket-container{
+.ticket-container {
     display: flex;
     justify-content: center;
     gap: 32px;

@@ -34,7 +34,7 @@
             <!--            <td>{{ eventDetail.longitude }}</td>-->
             <!--            <td>{{ eventDetail.latitude }}</td>-->
             <td>
-              <button @click="navigateToEventTickets(eventDetail.eventDetailId)" type="button" class="button-success btn btn-primary">Piletid
+              <button @click="navigateToEventTickets(eventDetail.eventDetailId)" type="button" class="btn-success btn">Piletid
               </button>
             </td>
             <td>

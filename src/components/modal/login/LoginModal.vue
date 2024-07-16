@@ -20,10 +20,10 @@
       </div>
     </template>
     <template #buttons>
-      <button @click="sendLogInRequest" type="submit" class="button-success btn btn-primary text-center text-nowrap">
+      <button @click="sendLogInRequest" type="submit" class="btn-success btn">
         Logi sisse
       </button>
-      <button @click="executeNewUser" type="submit" class="button-neutral btn btn-primary text-center text-nowrap">Loo
+      <button @click="executeNewUser" type="submit" class="btn-neutral btn">Loo
         konto
       </button>
     </template>

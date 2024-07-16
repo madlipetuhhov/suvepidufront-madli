@@ -27,11 +27,11 @@
     </div>
 
     <div class="buttons-row">
-      <button @click="addNewUser" type="submit" class="button-success btn btn-primary text-center text-nowrap">
+      <button @click="addNewUser" type="submit" class="btn-success btn btn-primary text-center text-nowrap">
         OK
       </button>
 
-      <button @click="navigateToHomeView" type="submit" class="button-danger btn btn-primary text-center text-nowrap">
+      <button @click="navigateToHomeView" type="submit" class="btn-danger btn btn-primary text-center text-nowrap">
         Loobu
       </button>
     </div>

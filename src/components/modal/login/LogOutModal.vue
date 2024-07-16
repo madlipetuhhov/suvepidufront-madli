@@ -4,8 +4,8 @@
       Soovid välja logida?
     </template>
     <template #buttons>
-      <button @click="executeLogOut" type="submit" class="button-danger btn btn-primary text-center text-nowrap">Logi välja</button>
-      <button @click="closeLogOutModal" type="submit" class="button-neutral btn btn-primary text-center text-nowrap">Loobu</button>
+      <button @click="executeLogOut" type="submit" class="btn-danger btn">Logi välja</button>
+      <button @click="closeLogOutModal" type="submit" class="btn-neutral btn">Loobu</button>
     </template>
   </OutModal>
 </template>

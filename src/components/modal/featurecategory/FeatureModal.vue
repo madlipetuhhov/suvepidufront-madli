@@ -17,10 +17,10 @@
     </template>
     <template #buttons>
       <button @click="sendPutFeaturesRequest" type="submit"
-              class="button-success btn btn-primary text-center text-nowrap">
+              class="btn-success btn">
         OK
       </button>
-      <button @click="closeFeatureModal" type="submit" class="button-danger btn btn-primary text-center text-nowrap">
+      <button @click="closeFeatureModal" type="submit" class="btn-danger btn">
         Loobu
       </button>
     </template>

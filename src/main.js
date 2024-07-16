@@ -6,6 +6,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.js"
 import "@/assets/css/style.css"
+import "@/assets/css/queries.css"
 
 
 // Font Awesome imports
