@@ -36,7 +36,7 @@
         <figure class="event-detail-card">
           <div class="event-detail-info">
             <div>
-              <h4 class="subheading-event-view">Asukoht</h4>
+              <h4 class="subheading-event-view">{{ eventDetail.address }}</h4>
               <ul class="list">
                 <li class="list-item">
                   <font-awesome-icon :icon="['far', 'calendar-days']" class="list-icon"/>
@@ -46,10 +46,10 @@
                   <font-awesome-icon :icon="['far', 'clock']" class="list-icon"/>
                   <span> {{ eventDetail.startTime }} - {{ eventDetail.endTime }} </span>
                 </li>
-                <li class="list-item">
-                  <font-awesome-icon :icon="['fas', 'location-dot']" class="list-icon"/>
-                  <span> {{ eventDetail.address }} </span>
-                </li>
+<!--                <li class="list-item">-->
+<!--                  <font-awesome-icon :icon="['fas', 'location-dot']" class="list-icon"/>-->
+<!--                  <span> {{ eventDetail.address }} </span>-->
+<!--                </li>-->
                 <li class="list-item">
                   <font-awesome-icon :icon="['fas', 'map-location-dot']" class="list-icon"/>
                   <span> {{ eventDetail.countyName }} </span>
@@ -60,9 +60,9 @@
                 </li>
               </ul>
             </div>
-            <div>
-              <h4 class="subheading-event-view">Piletid</h4>
-              <div class="event-view-tickets" v-for="tickets in eventTicketInfo" :key="tickets.eventTicketId">
+            <div v-for="tickets in eventTicketInfo" :key="tickets.eventTicketId">
+              <h4 class="subheading-event-view">{{ tickets.ticketTypeName }}</h4>
+              <div class="event-view-tickets">
                 <ul class="list">
                   <li class="list-item">
                     <font-awesome-icon :icon="['fas', 'ticket']" class="list-icon"/>
@@ -143,6 +143,7 @@ export default {
           ticketTypeName: '',
           ticketTypePrice: 0,
           total: 0,
+          status:'',
         }
       ],
     }
@@ -188,11 +189,25 @@ export default {
         router.push({name: 'errorRoute'})
       })
     },
+
+    // kus ma siin eventDetailId saaksin
+    // sendGetEventTicketsRequest() {
+    //   this.$http.get("/tickets", {
+    //     params: {
+    //       eventDetailId: this.eventDetailId
+    //     }
+    //   }).then(response => {
+    //     this.eventTicketInfo = response.data
+    //   }).catch(() => {
+    //     router.push({name: 'errorRoute'})
+    //   })
+    // },
   },
   beforeMount() {
     this.sendGetSelectedFeaturesRequest()
     this.sendGetSelectedCategoriesRequest()
     this.sendGetEventDetailRequest()
+    this.sendGetEventTicketsRequest()
   }
 }
 </script>
