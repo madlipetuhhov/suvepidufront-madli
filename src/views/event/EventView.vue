@@ -1,15 +1,10 @@
 <template>
   <div class="container page-content">
-    <h2 class="text-center">Test nimi{{ eventInfo.title }}</h2>
+    <h2 class="text-center">{{ mainEventInfo.title }}</h2>
 
     <div class="event-grid">
-      <EventImage class="event-img event-view-img" :image-data="eventInfo.imageData"/>
-      <p class="event-description">test kirjeldus Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper
-        enim vel mattis feugiat. Praesent eu mauris eros. Pellentesque sed congue justo, eu suscipit turpis. Integer
-        vehicula, nulla vel vehicula semper, arcu nunc volutpat purus, eu consectetur lorem ante a erat. Integer
-        tincidunt
-        tortor id massa gravida hendrerit. Mauris fermentum sem massa, eget ultrices erat commodo at. Sed scelerisque
-        augue ac congue elementum.</p>
+      <EventImage class="event-img event-view-img" :image-data="mainEventInfo.imageData"/>
+      <p class="event-description">{{mainEventInfo.description}}</p>
 
       <div class="feature-category">
         <div>
@@ -95,10 +90,11 @@ export default {
     return {
       mainEventId: useRoute().query.mainEventId,
 
-      eventInfo: {
+      mainEventInfo: {
         title: '',
         description: '',
         imageData: '',
+        mainEventId: 0
       },
 
       selectedFeatures: [
@@ -186,6 +182,19 @@ export default {
       })
     },
 
+    sendGetMainEventRequest() {
+      this.$http.get("/event/main", {
+            params: {
+              mainEventId: this.mainEventId
+            }
+          }
+      ).then(response => {
+        this.mainEventInfo = response.data
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    },
+
     // kus ma siin eventDetailId saaksin
     // sendGetEventTicketsRequest() {
     //   this.$http.get("/tickets", {
@@ -203,6 +212,7 @@ export default {
     this.sendGetSelectedFeaturesRequest()
     this.sendGetSelectedCategoriesRequest()
     this.sendGetEventDetailRequest()
+    this.sendGetMainEventRequest()
     // this.sendGetEventTicketsRequest()
   }
 }
