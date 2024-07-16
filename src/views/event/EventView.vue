@@ -46,10 +46,6 @@
                   <font-awesome-icon :icon="['far', 'clock']" class="list-icon"/>
                   <span> {{ eventDetail.startTime }} - {{ eventDetail.endTime }} </span>
                 </li>
-<!--                <li class="list-item">-->
-<!--                  <font-awesome-icon :icon="['fas', 'location-dot']" class="list-icon"/>-->
-<!--                  <span> {{ eventDetail.address }} </span>-->
-<!--                </li>-->
                 <li class="list-item">
                   <font-awesome-icon :icon="['fas', 'map-location-dot']" class="list-icon"/>
                   <span> {{ eventDetail.countyName }} </span>
@@ -207,7 +203,7 @@ export default {
     this.sendGetSelectedFeaturesRequest()
     this.sendGetSelectedCategoriesRequest()
     this.sendGetEventDetailRequest()
-    this.sendGetEventTicketsRequest()
+    // this.sendGetEventTicketsRequest()
   }
 }
 </script>
