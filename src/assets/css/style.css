@@ -68,9 +68,15 @@ h1 {
     font-size: 36px;
 }
 
+h2 {
+    font-size: 30px;
+    margin-bottom: 48px;
+}
+
 .container {
     margin: 0 auto;
     width: 1200px;
+    padding: 0 3.2rem;
 }
 
 .page-content {
@@ -114,7 +120,7 @@ h1 {
     cursor: pointer;
 }
 
-.btn-success:hover, .btn-success:active, .btn-success:focus  {
+.btn-success:hover, .btn-success:active, .btn-success:focus {
     background-color: #6a704c;
     color: #fbf9f6;
 }
@@ -372,7 +378,8 @@ header {
 .event-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 36px;
+    column-gap: 48px;
+    row-gap: 64px;
 }
 
 .event-card {
@@ -466,4 +473,48 @@ header {
     justify-content: center;
     gap: 32px;
     margin: 12px 0;
+}
+
+/* EVENT VIEW */
+.event-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 48px;
+    row-gap: 64px;
+}
+
+.event-description{
+    grid-column: span 2;
+    font-size: 18px;
+}
+
+.event-view-img{
+    grid-column: span 3;
+    height: 100%;
+}
+
+.event-view-fc-header{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.list-item {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    line-height: 1.2;
+}
+
+.list-icon {
+    width: 16px;
+    height: 16px;
+    color: #6a704c;
 }

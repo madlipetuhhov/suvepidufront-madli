@@ -8,7 +8,7 @@
         <DeleteMainEventModal ref="deleteMainEventModal" @event-main-event-removed="handleMainEventRemovedEvent"/>
       </div>
 
-      <h1>Minu sündmused - lisa ja muuda</h1>
+      <h2>Minu sündmused - lisa ja muuda</h2>
 
       <div class="dropdown-add">
         <div class="input-group business-dropdown">
@@ -51,7 +51,7 @@
                                :icon="['far', 'pen-to-square']"/>
           </li>
           <li>
-            <font-awesome-icon @click="navigateToViewEvent(mainEventInfo.mainEventId)" class="icon-view"
+            <font-awesome-icon @click="navigateToEventView(mainEventInfo.mainEventId)" class="icon-view"
                                :icon="['far', 'eye']"/>
           </li>
           <li>
@@ -105,12 +105,8 @@ export default {
     }
   },
   methods: {
-    navigateToFeaturesCategories(mainEventId) {
-      router.push({name: 'featureCategoryRoute', query: {mainEventId: mainEventId}})
-    },
-
-    navigateToEventDetail(mainEventId) {
-      router.push({name: 'eventDetailRoute', query: {mainEventId: mainEventId}})
+    navigateToEventView(mainEventId) {
+      router.push({name: 'eventRoute', query: {mainEventId: mainEventId}})
     },
 
     navigateToAddEvent() {
@@ -121,8 +117,16 @@ export default {
       router.push({name: 'mainEventRoute', query: {mainEventId: mainEventId}})
     },
 
+    navigateToFeaturesCategories(mainEventId) {
+      router.push({name: 'featureCategoryRoute', query: {mainEventId: mainEventId}})
+    },
+
     navigateToTicketTypes(mainEventId) {
       router.push({name: 'eventTicketTypeRoute', query: {mainEventId: mainEventId}})
+    },
+
+    navigateToEventDetail(mainEventId) {
+      router.push({name: 'eventDetailRoute', query: {mainEventId: mainEventId}})
     },
 
     sendGetMainEventsRequest() {
