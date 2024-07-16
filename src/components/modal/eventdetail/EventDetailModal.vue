@@ -26,12 +26,12 @@
       </div>
       <div>TODO: pikkuskraad ja laiuskraad ei ole kaardiga implementeeritud</div>
       <div class="mb-3">
-        <label class="form-label">Pikkuskraad</label>
-        <input v-model="eventDetailInfo.longitude" type="text" class="form-control">
-      </div>
-      <div class="mb-3">
         <label class="form-label">Laiuskraad</label>
         <input v-model="eventDetailInfo.latitude" type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Pikkuskraad</label>
+        <input v-model="eventDetailInfo.longitude" type="text" class="form-control">
       </div>
     </template>
     <template #buttons>

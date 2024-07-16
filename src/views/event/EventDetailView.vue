@@ -16,8 +16,8 @@
             <th scope="col">Lõpp</th>
             <th scope="col">Maakond</th>
             <th scope="col">Asukoht</th>
-            <!--            <th scope="col">Pikkuskraad</th>-->
             <!--            <th scope="col">Laiuskraad</th>-->
+            <!--            <th scope="col">Pikkuskraad</th>-->
             <th scope="col">Piletid</th>
             <th scope="col">Muuda</th>
             <th scope="col">Kustuta</th>
@@ -31,8 +31,8 @@
             <td>{{ eventDetail.endTime }}</td>
             <td>{{ eventDetail.countyName }}</td>
             <td>{{ eventDetail.address }}</td>
-            <!--            <td>{{ eventDetail.longitude }}</td>-->
             <!--            <td>{{ eventDetail.latitude }}</td>-->
+            <!--            <td>{{ eventDetail.longitude }}</td>-->
             <td>
               <button @click="navigateToEventTickets(eventDetail.eventDetailId)" type="button" class="btn-success btn">Piletid
               </button>
