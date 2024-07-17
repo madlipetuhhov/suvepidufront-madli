@@ -4,7 +4,7 @@
 
     <div class="event-grid">
       <EventImage class="event-img event-view-img" :image-data="mainEventInfo.imageData"/>
-      <p class="event-description">{{mainEventInfo.description}}</p>
+      <p class="event-description">{{ mainEventInfo.description }}</p>
 
       <div class="feature-category">
         <div>
@@ -52,7 +52,7 @@
               </ul>
             </div>
             <div v-for="tickets in eventTicketInfo" :key="tickets.eventTicketId">
-              <h4 class="subheading-event-view">{{ tickets.ticketTypeName }}</h4>
+              <h4 class="subheading-event-view">Piletid</h4>
               <div class="event-view-tickets">
                 <ul class="list">
                   <li class="list-item">
@@ -74,6 +74,10 @@
         </figure>
       </div>
 
+      <div>
+        todo: business andmete ära toomine
+      </div>
+
     </div>
   </div>
 </template>
@@ -89,6 +93,36 @@ export default {
   data() {
     return {
       mainEventId: useRoute().query.mainEventId,
+
+      eventInfo: [
+        {
+          title: '',
+          description: '',
+          imageData: '',
+          featureId: 0,
+          featureName: '',
+          categoryId: 0,
+          categoryName: '',
+          eventDetailId: 0,
+          date: '',
+          startTime: '',
+          endTime: '',
+          address: '',
+          countyName: '',
+          longitude: 0,
+          latitude: 0,
+          ticketTypeName: '',
+          ticketTypePrice: 0,
+          total: 0,
+          available: 0
+        }
+      ],
+
+      businessInfo: {
+        companyName: '',
+        phone: '',
+        email: ''
+      },
 
       mainEventInfo: {
         title: '',
@@ -135,7 +169,7 @@ export default {
           ticketTypeName: '',
           ticketTypePrice: 0,
           total: 0,
-          status:'',
+          status: '',
         }
       ],
     }
