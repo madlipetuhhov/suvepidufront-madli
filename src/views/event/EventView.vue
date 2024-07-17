@@ -73,12 +73,24 @@
           </div>
         </figure>
       </div>
-
-      <div>
-        todo: business andmete ära toomine
-      </div>
-
     </div>
+    <aside class="business-contacts" v-for="business in businessInfo" :key="business.businessId">
+      <h4 class="subheading-event-view">Korraldaja kontaktid</h4>
+      <ul class="list">
+        <li class="list-item">
+          <font-awesome-icon :icon="['far', 'building']" class="list-icon"/>
+          <span> {{ business.companyName }} </span>
+        </li>
+        <li class="list-item">
+          <font-awesome-icon :icon="['fas', 'phone']" class="list-icon"/>
+          <span> {{ business.phone }} </span>
+        </li>
+        <li class="list-item">
+          <font-awesome-icon :icon="['far', 'envelope']" class="list-icon"/>
+          <span> {{ business.email }} </span>
+        </li>
+      </ul>
+    </aside>
   </div>
 </template>
 
@@ -119,6 +131,7 @@ export default {
       ],
 
       businessInfo: {
+        businessId: 0,
         companyName: '',
         phone: '',
         email: ''
