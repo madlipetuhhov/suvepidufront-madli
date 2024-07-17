@@ -548,6 +548,7 @@ header {
 
 .business-contacts{
     margin-top: 64px;
+    margin-bottom: 64px;
     padding-top: 32px;
     border-top: 1px solid #e1e2db;
 }

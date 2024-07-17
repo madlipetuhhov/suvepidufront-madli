@@ -74,23 +74,23 @@
         </figure>
       </div>
     </div>
-    <aside class="business-contacts" v-for="business in businessInfo" :key="business.businessId">
+    <div class="business-contacts">
       <h4 class="subheading-event-view">Korraldaja kontaktid</h4>
       <ul class="list">
         <li class="list-item">
           <font-awesome-icon :icon="['far', 'building']" class="list-icon"/>
-          <span> {{ business.companyName }} </span>
+          <span> {{ businessInfo.companyName }} </span>
         </li>
         <li class="list-item">
           <font-awesome-icon :icon="['fas', 'phone']" class="list-icon"/>
-          <span> {{ business.phone }} </span>
+          <span> {{ businessInfo.phone }} </span>
         </li>
         <li class="list-item">
           <font-awesome-icon :icon="['far', 'envelope']" class="list-icon"/>
-          <span> {{ business.email }} </span>
+          <span> {{ businessInfo.email }} </span>
         </li>
       </ul>
-    </aside>
+    </div>
   </div>
 </template>
 
@@ -98,6 +98,7 @@
 import EventImage from "@/components/image/EventImage.vue";
 import router from "@/router";
 import {useRoute} from "vue-router";
+import businessInfo from "@/views/newaccount/BusinessInfo.vue";
 
 export default {
   name: "EventView",
@@ -131,7 +132,6 @@ export default {
       ],
 
       businessInfo: {
-        businessId: 0,
         companyName: '',
         phone: '',
         email: ''
@@ -189,6 +189,22 @@ export default {
   },
 
   methods: {
+    sendGetBusinessRequest() {
+      this.$http.get('/business', {
+            params: {
+              mainEventId: this.mainEventId
+            }
+          }
+      ).then(response => {
+        this.businessInfo = response.data
+        console.log(this.businessInfo)
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      });
+    },
+
+
+
     sendGetSelectedFeaturesRequest() {
       this.$http.get("/event/features", {
             params: {
@@ -260,6 +276,7 @@ export default {
     this.sendGetSelectedCategoriesRequest()
     this.sendGetEventDetailRequest()
     this.sendGetMainEventRequest()
+    this.sendGetBusinessRequest()
     // this.sendGetEventTicketsRequest()
   }
 }
