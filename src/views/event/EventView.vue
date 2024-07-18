@@ -197,13 +197,23 @@ export default {
           }
       ).then(response => {
         this.businessInfo = response.data
-        console.log(this.businessInfo)
       }).catch(() => {
         router.push({name: 'errorRoute'})
       });
     },
 
-
+    sendGetEventInfoRequest() {
+      this.$http.get("/event", {
+            params: {
+              mainEventId: this.mainEventId
+            }
+          }
+      ).then(response => {
+        this.eventInfo= response.data
+      }).catch(() => {
+        router.push({name: 'errorRoute'})
+      })
+    },
 
     sendGetSelectedFeaturesRequest() {
       this.$http.get("/event/features", {
